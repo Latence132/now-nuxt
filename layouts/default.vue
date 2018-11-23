@@ -3,10 +3,9 @@
   <v-content>
     <v-container>
       <no-ssr>
-        <full-page :options="options">
-          <nuxt />
-          <!-- <div> This content will only be visibe on browser render, not server render </div> -->
-        </full-page>
+        <nuxt />
+        <!-- <div> This content will only be visibe on browser render, not server render </div> -->
+
       </no-ssr>
 
     </v-container>
