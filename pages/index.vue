@@ -1,18 +1,15 @@
 <template>
 <div>
   <full-page ref="fullpage" :options="options">
-    <div class="section">
+    <div class="section" v-lazy:background-image="imageURL">
       <button class="next" @click="$refs.fullpage.api.moveSectionDown()" style="background-color: red;">Next</button>
-      Section 1
     </div>
-    <div class="section">
+    <div class="section" v-lazy:background-image="imageURL1">
       <button class="prev" @click="$refs.fullpage.api.moveSectionUp()" style="background-color: red;">Prev</button>
       <button class="next" @click="$refs.fullpage.api.moveSectionDown()" style="background-color: red;">Next</button>
-      Section 2
     </div>
-    <div class="section">
+    <div class="section" v-lazy:background-image="imageURL2">
       <button class="prev" @click="$refs.fullpage.api.moveSectionUp()" style="background-color: red;">Prev</button>
-      Section 3
     </div>
   </full-page>
 </div>
@@ -20,5 +17,13 @@
 
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      imageURL: 'aerial-aerial-view-architecture-977pxh.jpg',
+      imageURL1: 'black-wallpaper-night-sky-7477_977pxh.jpg',
+      imageURL2: 'mer_ecran1.jp2'
+    }
+  }
+}
 </script>

@@ -36,7 +36,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/vuetify',
-    { src: '~/plugins/fullpage', ssr: false }
+    { src: '~/plugins/fullpage', ssr: false },
+    { src: '~/plugins/vue-lazyload', ssr: false }
   ],
 
   /*
