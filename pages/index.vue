@@ -3,9 +3,10 @@
   <full-page ref="fullpage" :options="options">
     <!-- class section is for the fullpage-vue -->
     <video-bg class="section" :sources="[videoBg]" v-lazy:background-image="imageURL2" autoplay muted loop>
-      <intro></intro>
+      <intro style="padding-top: 20%" />
     </video-bg>
     <div class="section" v-lazy:background-image="imageURL">
+      <neige></neige>
       <button class="prev" @click="$refs.fullpage.api.moveSectionUp()" style="background-color: red;">Prev</button>
       <button class="next" @click="$refs.fullpage.api.moveSectionDown()" style="background-color: red;">Next</button>
     </div>
@@ -24,10 +25,12 @@
 <script>
 import VideoBg from "vue-videobg/src/VideoBackground.vue";
 import intro from "~/components/intro.vue";
+import neige from "~/components/neige.vue";
 export default {
   components: {
     VideoBg,
-    intro
+    intro,
+    neige
   },
   data() {
     return {

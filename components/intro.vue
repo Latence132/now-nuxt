@@ -1,12 +1,11 @@
 <template>
-<v-layout justify-center)>
-  <v-flex class=" text-xs-center xs12 black--text opening">
-    <h2 class="opening fill-height ">
-      <span>coucou</span>
-      <span>c'est</span>
-      <span>nous</span>
-      <span>:)</span>
-      <span></span>
+<v-layout fill-height justify-center>
+  <v-flex class="text-xs-center xs12 black--text opening">
+    <h2 class="opening fill-height">
+      <span>Bienvenue</span>
+      <span>sur la</span>
+      <span>page web de</span>
+      <span>Alexandre Chaumet</span>
     </h2>
   </v-flex>
 </v-layout>
@@ -23,7 +22,10 @@ export default {
 }
 </script>
 
-<style lang="css" >
+<style lang="css"  scoped>
+* {
+  border:  1px dotted red;
+}
 .opening span {
   animation:
     animateOpen 5s ease-in-out infinite, flash .1s ease-in-out
