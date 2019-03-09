@@ -2,7 +2,7 @@
   <v-layout>
     <full-page id="idFullPage" ref="fullpage" :options="options">
       <!-- class section is for the fullpage-vue -->
-      <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
+      <!-- <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
         <video-bg :sources="[videoBg]" autoplay muted loop>
           <intro style="padding-top: 20%"/>
         </video-bg>
@@ -10,39 +10,14 @@
 
       <div class="section" v-lazy:background-image="imageURL3" :style="styleBg">
         <neige></neige>
-        <v-layout row justify-end>
-          <v-flex xs1>
-          <v-btn flat icon color="pink" class="prev" @click="$refs.fullpage.api.moveSectionUp()">
-            <v-icon>arrow_upward</v-icon>
-          </v-btn>
-          <v-btn flat icon color="pink" class="next" @click="$refs.fullpage.api.moveSectionDown()">
-            <v-icon>arrow_downward</v-icon>
-          </v-btn>
-        </v-flex>
-        </v-layout>
-      </div>
+         <navButtons @move="move"></navButtons> 
+      </div>-->
       <div class="section" v-lazy:background-image.idFullPage="imageURL1" :style="styleBg">
-        <inspire></inspire>
-        <v-layout row justify-end>
-          <v-flex xs1>
-          <v-btn flat icon color="pink" class="prev" @click="$refs.fullpage.api.moveSectionUp()">
-            <v-icon>arrow_upward</v-icon>
-          </v-btn>
-          <v-btn flat icon color="pink" class="next" @click="$refs.fullpage.api.moveSectionDown()">
-            <v-icon>arrow_downward</v-icon>
-          </v-btn>
-        </v-flex>
-        </v-layout>
-        
+        <techno :textSize="textSize"></techno>
+        <navButtons @move="move"></navButtons>
       </div>
       <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
-        <v-layout row justify-end>
-          <v-flex xs1>
-          <v-btn flat icon color="pink" class="prev" @click="$refs.fullpage.api.moveSectionUp()">
-            <v-icon>arrow_upward</v-icon>
-          </v-btn>
-        </v-flex>
-        </v-layout>
+        <navButtonsUp @move="move"></navButtonsUp>
       </div>
     </full-page>
   </v-layout>
@@ -53,18 +28,26 @@
 import VideoBg from "vue-videobg/src/VideoBackground.vue";
 import intro from "~/components/intro.vue";
 import neige from "~/components/neige.vue";
-import inspire from "~/pages/inspire.vue";
+//import inspire from "~/pages/inspire.vue";
+import techno from "~/components/techno.vue";
+import navButtons from "~/components/navButtons.vue";
+import navButtonsUp from "~/components/navButtonsUp.vue";
+
 export default {
   components: {
     VideoBg,
     intro,
     neige,
-    inspire
+    // inspire,
+    techno,
+    navButtons,
+    navButtonsUp
   },
   data() {
     return {
       styleBg: {
-        "background-size": "100%"
+        "background-size": "100%",
+        height: "100%"
       },
       imageURL: "aerial-aerial-view-architecture-977pxh.jpg",
       imageURL1: "black-wallpaper-night-sky-7477_977pxh.jpg",
@@ -75,6 +58,29 @@ export default {
         licenceKey: "OPEN-SOURCE-GPLV3-LICENSE"
       }
     };
+  },
+  computed: {
+    textSize() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "font-size: 12px;";
+        case "sm":
+          return "font-size: 14px;";
+        case "md":
+          return "font-size: 15px;";
+        case "lg":
+          return "font-size: 17px;";
+        case "xl":
+          return "font-size: 22px;";
+      }
+    }
+  },
+  methods: {
+    move(direction) {
+      direction === "up"
+        ? this.$refs.fullpage.api.moveSectionUp()
+        : this.$refs.fullpage.api.moveSectionDown();
+    }
   }
 };
 </script>

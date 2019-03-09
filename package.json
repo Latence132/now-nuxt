@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
+    "eslint": "^5.15.1",
     "now": "^12.1.9",
     "nuxt": "^2.0.0",
     "nuxt-stylus-resources-loader": "^2.0.0",
