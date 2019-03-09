@@ -9,11 +9,11 @@
         v-flex(xs12)
             v-layout(row wrap )
                 v-flex(v-for="image,index in listFront" :key="index" xs2 )
-                    img(v-lazy="image").imgResponsive
+                    img(v-lazy="image" :style="imgResponsive")
         v-flex(xs12)
             v-layout(row wrap )
                 v-flex(v-for="image,index in listBack" :key="index" xs2 )
-                    img(v-lazy="image").imgResponsive
+                    img(v-lazy="image" :style="imgResponsive")
         v-flex(xs12) hello
 </template>
 
@@ -34,19 +34,12 @@ export default {
         "Node.js_logo_200px.png",
         "php-200px_150px_logo.png",
         "Java_Logo_107px_200px.png"
-      ]
+      ],
+      imgResponsive: {
+        width: "auto",
+        height: "200px"
+      }
     };
   }
 };
 </script>
-
-<style lang="css">
-/* * {
-    border: 1px dotted red;
-    } */
-/* .imgResponsive{
-        width: auto;
-        height: 200px;
-        
-    } */
-</style>
