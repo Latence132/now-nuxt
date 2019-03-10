@@ -4,7 +4,7 @@
       <!-- class section is for the fullpage-vue -->
       <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
         <video-bg :sources="[videoBg1]" autoplay muted loop>
-          <intro :textSize="textSizeWelcome" style="padding-top: 20%"/>
+          <intro :textSize="textSizeWelcome"/>
         </video-bg>
       </div>
 
@@ -12,6 +12,7 @@
         <techno :textSize="textSize"/>
         <navButtons @move="move"></navButtons>
       </div>
+
       <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
         <video-bg :sources="[videoBg3]" autoplay muted loop>
           <realisation/>
@@ -68,6 +69,20 @@ export default {
     };
   },
   computed: {
+    imageSize() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return " 12px;";
+        case "sm":
+          return " 14px;";
+        case "md":
+          return " 15px;";
+        case "lg":
+          return " 17px;";
+        case "xl":
+          return " 22px;";
+      }
+    },
     textSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
@@ -131,4 +146,22 @@ img[lazy="loaded"] {
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
+/* .video_contain {
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+}
+
+video {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+  min-height: 50%;
+  min-width: 50%;
+} */
 </style>

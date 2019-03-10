@@ -1,5 +1,5 @@
 <template>
-  <v-layout fill-height justify-center>
+  <v-layout wrap align-center justify-space-around row fill-height>
     <v-flex class="text-xs-center xs12 black--text opening" :style="textSize">
       <h2 class="opening fill-height">
         <span>Alexandre</span>

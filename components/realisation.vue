@@ -1,15 +1,8 @@
 <template>
-  <v-container fluid>
-    <v-layout
-      wrap
-      align-center
-      justify-space-around
-      row
-      fill-height
-      style="border: 1px dotted red;"
-    >
-      <v-flex xs12 sm6 md4 lg3 v-for="(realisation, index) in realisations" :key="index">
-        <v-card class="elevation-24">
+  <v-layout wrap align-center justify-space-around row fill-height style="border: 1px dotted red;">
+    <v-flex xs12 sm6 md4 lg3 v-for="(realisation, index) in realisations" :key="index">
+      <v-hover>
+        <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
           <v-img
             :class="realisation.image.class"
             :height="realisation.image.height"
@@ -23,8 +16,17 @@
               </v-layout>
             </v-container>
           </v-img>
+          <v-divider></v-divider>
           <v-card-title>
-            <div>{{ realisation.content }}</div>
+            <v-flex xs12>{{ realisation.content }}</v-flex>
+            <v-flex xs12>
+              <v-divider></v-divider>
+            </v-flex>
+            <v-flex>
+              <ul>
+                <li v-for="(techno, index) in realisation.technos" :key="index">{{techno}}</li>
+              </ul>
+            </v-flex>
           </v-card-title>
           <v-card-actions>
             <v-btn flat color="orange">
@@ -32,9 +34,9 @@
             </v-btn>
           </v-card-actions>
         </v-card>
-      </v-flex>
-    </v-layout>
-  </v-container>
+      </v-hover>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script>
@@ -43,14 +45,14 @@ export default {
     return {
       realisations: [
         {
-          title: "Top 10 Australian beaches",
+          title: "Cette page",
           image: {
-            class: "white--text,",
+            class: "black--text",
             height: "200px",
-            src: "https://cdn.vuetifyjs.com/images/cards/docks.jpg"
+            src: "fullpagevue.png"
           },
-          content:
-            "Number 10\nWhitehaven Beach\nWhitsunday Island, Whitsunday Islands",
+          content: `Number  10. White haven Beach sunday Island, Whitsunday Islands`,
+          technos: ["Vuejs", "Nuxt"],
           lien: "Explore"
         },
         {
@@ -61,7 +63,8 @@ export default {
             src: "InspirateurLitteraire_1024px.png"
           },
           content:
-            "Trouvez les phrases issues de la littéraire Francaise du XXème siècle.\nAvec plus d'une centaine d'ouvrages scannés et archivé dans une base de données. Vous pouvez extrairent les phrases en précisant un auteur, sujet, verbe et compléments",
+            "Trouvez les  phrases issues de la littéraire Francaise du XXème siècle.Avec plus d'une centaine d'ouvrages scannés et archivé dans une base de données.Vous pouvez extrairent les phrases en précisant un auteur, sujet, verbe et objet",
+          technos: ["PHP", "JQuery"],
           lien: "http://chaumetsoftware.com/InspirateurLitteraire/"
         }
       ]
