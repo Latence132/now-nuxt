@@ -2,7 +2,7 @@
   <v-layout>
     <full-page id="idFullPage" ref="fullpage" :options="options">
       <!-- class section is for the fullpage-vue -->
-      <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
+      <div class="section" v-lazy:background-image.idFullPage="imageURL1" :style="styleBg">
         <video-bg :sources="[videoBg1]" autoplay muted loop>
           <intro :textSize="textSizeWelcome"/>
         </video-bg>
@@ -56,11 +56,8 @@ export default {
       styleBg: {
         "background-size": "cover"
       },
-      styleBgC: {},
-      imageURL: "aerial-aerial-view-architecture-977pxh.jpg",
-      imageURL1: "black-wallpaper-night-sky-7477_977pxh.jpg",
-      imageURL2: "mer_ecran1.jp2",
-      imageURL3: "menglong-bao-517831-unsplash.jpg",
+      imageURL1: "bg_sea.png",
+      imageURL2: "mer_ecran1.png",
       videoBg1: "bg-1.mp4",
       videoBg3: "bg-3.mp4",
       options: {
@@ -123,9 +120,6 @@ export default {
 </script>
 
 <style lang="css">
-img[lazy="loaded"] {
-  background-size: 100%;
-}
 .techno {
   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
   background: #45484d; /* Old browsers */
@@ -146,22 +140,4 @@ img[lazy="loaded"] {
   ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 }
-/* .video_contain {
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-}
-
-video {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: auto;
-  min-height: 50%;
-  min-width: 50%;
-} */
 </style>

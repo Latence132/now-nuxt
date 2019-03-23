@@ -51,7 +51,7 @@ export default {
             height: "200px",
             src: "fullpagevue.png"
           },
-          content: `Number  10. White haven Beach sunday Island, Whitsunday Islands`,
+          content: `Une page`,
           technos: ["Vuejs", "Nuxt"],
           lien: "Explore"
         },
@@ -60,7 +60,7 @@ export default {
           image: {
             class: "black--text",
             height: "200px",
-            src: "InspirateurLitteraire_1024px.png"
+            src: "InspirateurLitteraire.png"
           },
           content:
             "Trouvez les  phrases issues de la littéraire Francaise du XXème siècle.Avec plus d'une centaine d'ouvrages scannés et archivé dans une base de données.Vous pouvez extrairent les phrases en précisant un auteur, sujet, verbe et objet",
