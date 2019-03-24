@@ -1,46 +1,62 @@
 <template>
-  <v-layout wrap align-center justify-space-around row fill-height style="border: 1px dotted red;">
-    <v-flex xs12 sm6 md4 lg3 v-for="(realisation, index) in realisations" :key="index">
-      <v-hover>
-        <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
-          <v-img
-            :class="realisation.image.class"
-            :height="realisation.image.height"
-            :src="realisation.image.src"
-          >
-            <v-container fill-height fluid>
-              <v-layout fill-height>
-                <v-flex xs12 align-end flexbox>
-                  <span class="headline">{{ realisation.title }}</span>
-                </v-flex>
-              </v-layout>
-            </v-container>
-          </v-img>
-          <v-divider></v-divider>
-          <v-card-title>
-            <v-flex xs12>{{ realisation.content }}</v-flex>
-            <v-flex xs12>
-              <v-divider></v-divider>
-            </v-flex>
-            <v-flex>
-              <ul>
-                <li v-for="(techno, index) in realisation.technos" :key="index">{{techno}}</li>
-              </ul>
-            </v-flex>
-          </v-card-title>
-          <v-card-actions>
-            <v-btn flat color="orange">
-              <a :href="realisation.lien" class="orange--text">{{ realisation.lien }}</a>
-            </v-btn>
-          </v-card-actions>
-        </v-card>
-      </v-hover>
-    </v-flex>
+  <v-layout wrap colmun fill-height style="border: 1px solid red;">
+    <v-flex :style="textSize" class="text-xs-center">Quelques petits développement pour le fun</v-flex>
+    <v-layout
+      wrap
+      align-center
+      justify-space-around
+      row
+      fill-height
+      style="border: 1px dotted red;"
+    >
+      <v-flex xs12 sm6 md4 lg3 v-for="(realisation, index) in realisations" :key="index">
+        <v-hover>
+          <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
+            <v-img
+              :class="realisation.image.class"
+              :height="realisation.image.height"
+              :src="realisation.image.src"
+            >
+              <v-container fill-height fluid>
+                <v-layout fill-height>
+                  <v-flex xs12 align-end flexbox>
+                    <span class="headline">{{ realisation.title }}</span>
+                  </v-flex>
+                </v-layout>
+              </v-container>
+            </v-img>
+
+            <v-divider></v-divider>
+
+            <v-card-title>
+              <v-flex xs12>{{ realisation.content }}</v-flex>
+              <v-flex xs12>
+                <v-divider></v-divider>
+              </v-flex>
+              <v-flex>
+                <ul>
+                  <li v-for="(techno, index) in realisation.technos" :key="index">{{techno}}</li>
+                </ul>
+              </v-flex>
+            </v-card-title>
+
+            <v-card-actions>
+              <v-btn flat color="orange">
+                <a :href="realisation.lien" class="orange--text">{{ realisation.lien }}</a>
+              </v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-hover>
+      </v-flex>
+    </v-layout>
   </v-layout>
 </template>
 
 <script>
 export default {
+  props: {
+    textSize: String
+  },
   data() {
     return {
       realisations: [
@@ -51,7 +67,7 @@ export default {
             height: "200px",
             src: "fullpagevue.png"
           },
-          content: `Une page`,
+          content: `Cette page même qui sert simplement à être jolie`,
           technos: ["Vuejs", "Nuxt"],
           lien: "Explore"
         },

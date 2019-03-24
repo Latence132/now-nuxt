@@ -7,53 +7,51 @@
           <intro :textSize="textSizeWelcome"/>
         </video-bg>
       </div>
-
-      <div class="section techno" :style="styleBg">
-        <techno :textSize="textSize"/>
+      <!-- techno -->
+      <div class="section">
+        <particulesBg/>
+        <techno :textSize="textSize" :imageSize="imageSize" :style="styleParticles"/>
         <navButtons @move="move"></navButtons>
       </div>
 
       <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
         <video-bg :sources="[videoBg3]" autoplay muted loop>
-          <realisation/>
+          <realisation :textSize="textSizeWelcome"/>
         </video-bg>
         <navButtonsUp @move="move"></navButtonsUp>
       </div>
     </full-page>
   </v-layout>
-
-  <!-- <div class="section" v-lazy:background-image="imageURL3" :style="styleBg">
-        <neige></neige>
-        <navButtons @move="move"></navButtons>
-  </div>-->
-  <!-- v-lazy:background-image.idFullPage="imageURL1" -->
 </template>
 
 
 <script>
 import VideoBg from "vue-videobg/src/VideoBackground.vue";
 import intro from "~/components/intro.vue";
-import neige from "~/components/neige.vue";
-//import inspire from "~/pages/inspire.vue";
 import techno from "~/components/techno.vue";
 import navButtons from "~/components/navButtons.vue";
 import navButtonsUp from "~/components/navButtonsUp.vue";
 import realisation from "~/components/realisation.vue";
+import particulesBg from "~/components/particulesBg.vue";
 
 export default {
   components: {
     VideoBg,
     intro,
-    neige,
-    // inspire,
     techno,
     navButtons,
     navButtonsUp,
-    realisation
+    realisation,
+    particulesBg
   },
   data() {
     return {
+      styleParticles: {
+        position: "absolute",
+        top: "17%"
+      },
       styleBg: {
+        position: "relative",
         "background-size": "cover"
       },
       imageURL1: "bg_sea.png",
@@ -69,15 +67,15 @@ export default {
     imageSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return " 12px;";
+          return "height: 20px;";
         case "sm":
-          return " 14px;";
+          return "height: 50px;";
         case "md":
-          return " 15px;";
+          return "height: 100px;";
         case "lg":
-          return " 17px;";
+          return "height: 150px;";
         case "xl":
-          return " 22px;";
+          return "height: 200px;";
       }
     },
     textSize() {
@@ -120,24 +118,7 @@ export default {
 </script>
 
 <style lang="css">
-.techno {
-  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#45484d+0,000000+100;Black+3D+%231 */
-  background: #45484d; /* Old browsers */
-  background: -moz-linear-gradient(
-    45deg,
-    #45484d 0%,
-    #000000 100%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    45deg,
-    #45484d 0%,
-    #000000 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    45deg,
-    #45484d 0%,
-    #000000 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#45484d', endColorstr='#000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+span {
+  font-family: "Karla";
 }
 </style>

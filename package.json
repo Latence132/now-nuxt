@@ -1,8 +1,8 @@
 {
-  "name": "fullpagetest",
+  "name": "devweb",
   "version": "1.0.0",
-  "description": "My astounding Nuxt.js project",
-  "author": "Latence132",
+  "description": "Une page jolie",
+  "author": "Alexandre Chaumet",
   "private": true,
   "scripts": {
     "dev": "nuxt",
@@ -27,6 +27,7 @@
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-lazyload": "^1.2.6"
+    "vue-lazyload": "^1.2.6",
+    "vue-particles": "^1.0.9"
   }
 }
