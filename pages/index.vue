@@ -4,19 +4,19 @@
       <!-- class section is for the fullpage-vue -->
       <div class="section" v-lazy:background-image.idFullPage="imageURL1" :style="styleBg">
         <video-bg :sources="[videoBg1]" autoplay muted loop>
-          <intro :textSize="textSizeWelcome"/>
+          <intro :textSize="textSizeIntro"/>
         </video-bg>
       </div>
       <!-- techno -->
       <div class="section">
         <particulesBg/>
-        <techno :textSize="textSize" :imageSize="imageSize" :style="styleParticles"/>
+        <techno :textSize="textSizeRealisation" :imageSize="imageSize" :style="styleParticles"/>
         <navButtons @move="move"></navButtons>
       </div>
-
+      <!-- petits devs -->
       <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
         <video-bg :sources="[videoBg3]" autoplay muted loop>
-          <realisation :textSize="textSizeWelcome"/>
+          <realisation :textSize="textSizeRealisation" :imageSize="imageCardSize"/>
         </video-bg>
         <navButtonsUp @move="move"></navButtonsUp>
       </div>
@@ -48,10 +48,14 @@ export default {
     return {
       styleParticles: {
         position: "absolute",
-        top: "17%"
+        left: "0",
+        right: "0",
+        marginLeft: "auto",
+        marginRight: "auto",
+        width: "100%",
+        transform: "translate(0%, -50%)"
       },
       styleBg: {
-        position: "relative",
         "background-size": "cover"
       },
       imageURL1: "bg_sea.png",
@@ -64,12 +68,26 @@ export default {
     };
   },
   computed: {
+    imageCardSize() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "40px";
+        case "sm":
+          return "100px";
+        case "md":
+          return "200px";
+        case "lg":
+          return "300px";
+        case "xl":
+          return "400px";
+      }
+    },
     imageSize() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "height: 20px;";
-        case "sm":
           return "height: 50px;";
+        case "sm":
+          return "height: 75px;";
         case "md":
           return "height: 100px;";
         case "lg":
@@ -78,10 +96,10 @@ export default {
           return "height: 200px;";
       }
     },
-    textSize() {
+    textSizeTechno() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
-          return "font-size: 12px;";
+          return "font-size: 9px;";
         case "sm":
           return "font-size: 14px;";
         case "md":
@@ -92,7 +110,21 @@ export default {
           return "font-size: 22px;";
       }
     },
-    textSizeWelcome() {
+    textSizeRealisation() {
+      switch (this.$vuetify.breakpoint.name) {
+        case "xs":
+          return "font-size: 12px;";
+        case "sm":
+          return "font-size: 14px;";
+        case "md":
+          return "font-size: 15;";
+        case "lg":
+          return "font-size: 17;";
+        case "xl":
+          return "font-size: 22px;";
+      }
+    },
+    textSizeIntro() {
       switch (this.$vuetify.breakpoint.name) {
         case "xs":
           return "font-size: 24px;";

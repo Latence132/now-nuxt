@@ -15,6 +15,9 @@
 export default {
   props: {
     textSize: String
+  },
+  created() {
+    setInterval;
   }
 };
 </script>

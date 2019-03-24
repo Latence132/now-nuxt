@@ -1,23 +1,16 @@
 <template>
-  <v-layout wrap colmun fill-height style="border: 1px solid red;">
-    <v-flex :style="textSize" class="text-xs-center">Quelques petits développement pour le fun</v-flex>
-    <v-layout
-      wrap
-      align-center
-      justify-space-around
-      row
-      fill-height
-      style="border: 1px dotted red;"
-    >
-      <v-flex xs12 sm6 md4 lg3 v-for="(realisation, index) in realisations" :key="index">
+  <v-layout wrap colmun fill-height>
+    <v-flex :style="textSize" text-xs-center>Quelques petits développement pour le fun</v-flex>
+    <v-layout wrap row align-center justify-space-around fill-height>
+      <v-flex ma-1 pa-1 v-for="(realisation, index) in realisations" :key="index" xs12 sm6 md3 lg4>
         <v-hover>
           <v-card slot-scope="{ hover }" :class="`elevation-${hover ? 12 : 2}`">
             <v-img
               :class="realisation.image.class"
-              :height="realisation.image.height"
+              :height="imageSize"
               :src="realisation.image.src"
             >
-              <v-container fill-height fluid>
+              <v-container fill-height>
                 <v-layout fill-height>
                   <v-flex xs12 align-end flexbox>
                     <span class="headline">{{ realisation.title }}</span>
@@ -25,24 +18,27 @@
                 </v-layout>
               </v-container>
             </v-img>
-
+            <v-flex pa-1 xs12 :style="textSize">{{ realisation.content }}</v-flex>
             <v-divider></v-divider>
 
-            <v-card-title>
-              <v-flex xs12>{{ realisation.content }}</v-flex>
-              <v-flex xs12>
-                <v-divider></v-divider>
-              </v-flex>
-              <v-flex>
-                <ul>
-                  <li v-for="(techno, index) in realisation.technos" :key="index">{{techno}}</li>
-                </ul>
-              </v-flex>
-            </v-card-title>
+            <v-flex>
+              <ul>
+                <li
+                  pa-1
+                  v-for="(techno, index) in realisation.technos"
+                  :key="index"
+                  :style="textSize"
+                >{{techno}}</li>
+              </ul>
+            </v-flex>
 
             <v-card-actions>
               <v-btn flat color="orange">
-                <a :href="realisation.lien" class="orange--text">{{ realisation.lien }}</a>
+                <a
+                  :href="realisation.lien"
+                  class="orange--text"
+                  :style="textSize"
+                >{{ realisation.lien }}</a>
               </v-btn>
             </v-card-actions>
           </v-card>
@@ -55,7 +51,8 @@
 <script>
 export default {
   props: {
-    textSize: String
+    textSize: String,
+    imageSize: String
   },
   data() {
     return {
@@ -64,7 +61,6 @@ export default {
           title: "Cette page",
           image: {
             class: "black--text",
-            height: "200px",
             src: "fullpagevue.png"
           },
           content: `Cette page même qui sert simplement à être jolie`,
@@ -75,7 +71,6 @@ export default {
           title: "Inspirateur Littéraire",
           image: {
             class: "black--text",
-            height: "200px",
             src: "InspirateurLitteraire.png"
           },
           content:
