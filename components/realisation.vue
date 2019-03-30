@@ -33,13 +33,15 @@
             </v-flex>
 
             <v-card-actions>
-              <v-btn flat color="orange">
-                <a
-                  :href="realisation.lien"
-                  class="orange--text"
-                  :style="textSize"
-                >{{ realisation.lien }}</a>
-              </v-btn>
+              <v-flex class="text-truncate">
+                <v-btn flat color="orange">
+                  <a
+                    :href="realisation.lien"
+                    class="orange--text"
+                    :style="textSize"
+                  >{{ realisation.lien }}</a>
+                </v-btn>
+              </v-flex>
             </v-card-actions>
           </v-card>
         </v-hover>
@@ -53,6 +55,11 @@ export default {
   props: {
     textSize: String,
     imageSize: String
+  },
+  computed: {
+    textLink() {
+      return this.$vuetify.breakpoint.name === "xs" ? true : false;
+    }
   },
   data() {
     return {
