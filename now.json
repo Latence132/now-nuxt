@@ -1,3 +1,5 @@
 {
-  "name": "devweb"
+  "name": "devweb,
+  "version":2,
+  "builds":[{"src":"package.json","use":"@now/static-build"}]
 }
