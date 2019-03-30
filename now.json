@@ -3,13 +3,6 @@
   "version": 2,
   "builds": [{
     "src": "package.json",
-    {
-      "src": "*.html",
-      "use": "@now/static"
-    },
-    {
-      "src": "*.js",
-      "use": "@now/node"
-    }
+    "use": "@now/static-build"
   }]
 }
