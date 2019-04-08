@@ -68,7 +68,7 @@ export default {
           title: "Cette page",
           image: {
             class: "black--text",
-            src: "fullpagevue.png"
+            src: "sea_bg.png"
           },
           content: `Cette page même qui sert simplement à être jolie`,
           technos: ["Vuejs", "Nuxt"],
