@@ -13,7 +13,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
     v-flex.text-xs-center(xs12 sm4 id="cvLeft")
 
       // Compétences
-      v-flex.elevation-6(id="cvCompetences")
+      v-flex.pt-1.elevation-6(id="cvCompetences")
         h4
           v-layout(wrap row )
             v-flex
@@ -45,7 +45,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
     v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
 
       //Expériences professionnelles
-      v-flex(id="cvExps")
+      v-flex.pt-1(id="cvExps")
         h4
           v-layout(wrap row )
             v-flex
@@ -71,7 +71,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
              img(v-lazy='formation.png' alt="formation")
             v-flex.mt-2.headline Formations
         v-layout( wrap v-for="(formation, index) in formations" :key="index")
-          v-flex.text-xs-left(xs2) {{ formation.date }}
+          v-flex.pl-2.text-xs-left(xs2) {{ formation.date }}
             img(v-lazy='formation.logo' alt="logo_formation" style="height: 50px; width: auto;")
           v-flex.text-xs-left(xs10)
             v-layout(wrap)
