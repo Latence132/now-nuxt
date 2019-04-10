@@ -92,8 +92,8 @@ export default {
       photo_cv_petit: "photo_cv_petit.png",
       expPros: [
         {
-          date: "Depuis",
-          temps: "nov 2018",
+          date: "Nov",
+          temps: "2018",
           logo: "celad.png",
           lieu: "Gradignan (33)",
           job: "Développeur Web",
