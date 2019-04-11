@@ -35,11 +35,16 @@
             <v-card-actions>
               <v-flex class="text-truncate">
                 <v-btn flat color="orange">
-                  <a
+                  <a v-if="textLien"
                     :href="realisation.lien"
                     class="orange--text"
                     :style="textSize"
-                  >{{ realisation.lien }}</a>
+                  >{{ realisation.textLien }}</a>
+                  <a v-else
+                    :href="realisation.lien"
+                    class="orange--text"
+                    :style="textSize"
+                  ></a>
                 </v-btn>
               </v-flex>
             </v-card-actions>
@@ -72,7 +77,8 @@ export default {
           },
           content: `Cette page même qui sert simplement à être jolie`,
           technos: ["Vuejs", "Nuxt"],
-          lien: "/"
+          lien: "/",
+          textLien: "ici"
         },
         {
           title: "Inspirateur Littéraire",
