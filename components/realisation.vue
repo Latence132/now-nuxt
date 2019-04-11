@@ -72,7 +72,7 @@ export default {
           },
           content: `Cette page même qui sert simplement à être jolie`,
           technos: ["Vuejs", "Nuxt"],
-          lien: "Explore"
+          lien: "ici"
         },
         {
           title: "Inspirateur Littéraire",
@@ -81,7 +81,7 @@ export default {
             src: "InspirateurLitteraire.png"
           },
           content:
-            "Trouvez les  phrases issues de la littéraire Francaise du XXème siècle.Avec plus d'une centaine d'ouvrages scannés et archivé dans une base de données.Vous pouvez extrairent les phrases en précisant un auteur, sujet, verbe et objet",
+            "Trouver les phrases issues de la littéraire Française du XXème siècle. Avec plus d'une centaine d'ouvrages scannés et archivés dans une base de données.Vous pouvez extraire les phrases en précisant un auteur, sujet, verbe et objet.",
           technos: ["PHP", "JQuery"],
           lien: "http://chaumetsoftware.com/InspirateurLitteraire/"
         }

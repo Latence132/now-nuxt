@@ -6,7 +6,7 @@
               span 
               | Bonjour! Moi c'est Alexandre je suis développeur web depuis début 2018. Ancien ingénieur en génie industriel, je me suis réorienté dans le web pour suivre mon appétence à l'informatique.
               | En effet j'ai remarqué assez vite que préfèrais l'informatique aux autres domaines. J'ai commencé ma reconvertion en ligne en débutant par Open Classrooms.
-              | J'ai en suite suivi une formation de développeur de l'IFPA Bordeaux. Je suis maintenant en poste en ESN et je continue d'apprendre avec les docs officielles des dernières technos web. 
+              | J'ai ensuite suivi une formation de Développeur Web au sein de l'IFPA Bordeaux. Je suis maintenant en poste en ESN et je continue d'apprendre avec les docs officielles des dernières technos web. 
               
         v-flex
             v-layout(row wrap pa-1 justify-space-around )
