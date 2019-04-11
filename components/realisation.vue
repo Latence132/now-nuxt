@@ -72,7 +72,7 @@ export default {
           },
           content: `Cette page même qui sert simplement à être jolie`,
           technos: ["Vuejs", "Nuxt"],
-          lien: "ici"
+          lien: "/"
         },
         {
           title: "Inspirateur Littéraire",
