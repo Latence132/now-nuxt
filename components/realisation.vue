@@ -35,7 +35,7 @@
             <v-card-actions>
               <v-flex class="text-truncate">
                 <v-btn flat color="orange">
-                  <a v-if="textLien"
+                  <a v-if="realisation.textLien"
                     :href="realisation.lien"
                     class="orange--text"
                     :style="textSize"
@@ -44,7 +44,7 @@
                     :href="realisation.lien"
                     class="orange--text"
                     :style="textSize"
-                  ></a>
+                  >{{realisation.lien}}</a>
                 </v-btn>
               </v-flex>
             </v-card-actions>
