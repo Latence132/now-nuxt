@@ -13,16 +13,14 @@
   },
   "dependencies": {
     "cross-env": "^5.2.0",
-    "eslint": "^5.15.1",
-    "now": "^12.1.9",
-    "nuxt": "^2.0.0",
-    "nuxt-stylus-resources-loader": "^2.0.0",
-    "serve": "^10.1.1",
+    "nuxt": "^2.6.1",
     "vue-fullpage.js": "^0.1.0",
     "vue-videobg": "^2.0.0",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {
+    "nuxt-stylus-resources-loader": "^2.0.0",
+    "eslint": "^5.15.1",
     "nodemon": "^1.11.0",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
