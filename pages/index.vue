@@ -2,7 +2,7 @@
   <v-layout>
     <full-page id="idFullPage" ref="fullpage" :options="options">
       <!-- class section is for the fullpage-vue -->
-      <div class="section" v-lazy:background-image.idFullPage="imageURL1" :style="styleBg">
+      <div class="section" :style="styleBg">
         <video-bg :sources="[videoBg1]" autoplay muted loop>
           <intro :textSize="textSizeIntro"/>
         </video-bg>
@@ -14,7 +14,7 @@
         <navButtons @move="move"></navButtons>
       </div>
       <!-- petits devs -->
-      <div class="section" v-lazy:background-image.idFullPage="imageURL2" :style="styleBg">
+      <div class="section" :style="styleBg">
         <video-bg :sources="[videoBg3]" autoplay muted loop>
           <realisation :textSize="textSizeRealisation" :imageSize="imageCardSize"/>
         </video-bg>
@@ -58,11 +58,10 @@ export default {
       styleBg: {
         "background-size": "cover"
       },
-      imageURL1: "bg_sea.png",
-      imageURL2: "mer_ecran1.png",
       videoBg1: "bg-1.mp4",
       videoBg3: "bg-3.mp4",
       options: {
+        sectionsColor: ["#1976D2"],
         licenceKey: "OPEN-SOURCE-GPLV3-LICENSE"
       }
     };
