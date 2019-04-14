@@ -23,8 +23,8 @@ module.exports = {
     ],
     link: [{
         rel: 'icon',
-        type: 'image/x-icon',
-        href: '/favicon.ico'
+        type: 'image/png',
+        href: '/favicon.png'
       },
       {
         rel: 'stylesheet',
@@ -41,7 +41,7 @@ module.exports = {
    ** Customize the progress-bar color
    */
   loading: {
-    color: '#fff'
+    color: '#0F0'
   },
 
   /*
@@ -67,11 +67,7 @@ module.exports = {
     {
       src: '~plugins/vue-particles.js',
       ssr: false
-    },
-    // {
-    //   src: '~plugins/particles.js',
-    //   ssr: false
-    // },
+    }
   ],
 
   /*
