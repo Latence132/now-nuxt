@@ -9,23 +9,44 @@
     "build": "nuxt build",
     "start": "nuxt start",
     "generate": "nuxt generate",
-    "now-build": "nuxt generate"
+    "now-build": "nuxt generate",
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+.vue$": "vue-jest",
+      "^.+.js$": "babel-jest"
+    }
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "cross-env": "^5.2.0",
-    "nuxt": "^2.6.1",
+    "nuxt": "^2.6.2",
+    "save-dev": "^2.0.0",
     "vue-fullpage.js": "^0.1.0",
     "vue-videobg": "^2.0.0",
     "vuetify": "^1.2.4"
   },
   "devDependencies": {
-    "nuxt-stylus-resources-loader": "^2.0.0",
+    "@babel/core": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
+    "@vue/test-utils": "^1.0.0-beta.29",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^24.7.1",
     "eslint": "^5.15.1",
+    "jest": "^24.7.1",
     "nodemon": "^1.11.0",
+    "nuxt-stylus-resources-loader": "^2.0.0",
     "pug": "^2.0.3",
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
+    "vue-jest": "^3.0.4",
     "vue-lazyload": "^1.2.6",
     "vue-particles": "^1.0.9"
   }
