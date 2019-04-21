@@ -12,9 +12,19 @@ describe('Counter.vue', () => {
     expect(wrapper.text()).toContain('Counter: 0')
 
   })
-  test('increments the counter value when button is clicked', () => {
+  // test('increments the counter value when button is clicked', () => {
+  //   const wrapper = mount(Counter)
+  //   //.prop('onClick')
+  //   console.log(wrapper.find('button'))
+  //   expect(wrapper.find('button').trigger('click')).toContain('Counter: 1')
+  // })
+
+  it('button click should increment the count', () => {
     const wrapper = mount(Counter)
-    expect(wrapper.find('button').trigger('click')).toContain('Counter: 1')
+    expect(wrapper.vm.counter).toBe(0)
+    const button = wrapper.find('button')
+    button.trigger('click')
+    expect(wrapper.vm.counter).toBe(1)
   })
 
 
