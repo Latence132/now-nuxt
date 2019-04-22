@@ -27,12 +27,12 @@
 
 <script>
 import VideoBg from "vue-videobg/src/VideoBackground.vue";
-import intro from "~/components/intro.vue";
-import techno from "~/components/techno.vue";
-import navButtons from "~/components/navButtons.vue";
-import navButtonsUp from "~/components/navButtonsUp.vue";
-import realisation from "~/components/realisation.vue";
-import particulesBg from "~/components/particulesBg.vue";
+import intro from "@/components/intro.vue";
+import techno from "@/components/techno.vue";
+import navButtons from "@/components/navButtons.vue";
+import navButtonsUp from "@/components/navButtonsUp.vue";
+import realisation from "@/components/realisation.vue";
+import particulesBg from "@/components/particulesBg.vue";
 
 export default {
   components: {

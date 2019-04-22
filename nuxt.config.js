@@ -1,4 +1,5 @@
 const pkg = require('./package')
+const nodeExternals = require('webpack-node-externals')
 
 module.exports = {
   mode: 'spa',
@@ -73,7 +74,7 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: ['nuxt-babel'],
 
   /*
    ** Build configuration
@@ -83,7 +84,13 @@ module.exports = {
      ** You can extend webpack config here
      */
     extend(config, ctx) {
-
+      if (ctx.isServer) {
+        config.externals = [
+          nodeExternals({
+            whitelist: [/^dom-classes/]
+          })
+        ]
+      }
     }
   }
 }
