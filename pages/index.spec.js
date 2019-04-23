@@ -5,7 +5,16 @@ import {
 // import router from "@/router";
 import Vuetify from "vuetify";
 import index from "./index.vue";
-import intro from "@/intro.vue"
+// import Fullpage from "vue-fullpage.js/src/FullPage.vue";
+// import NoSsr from "NoSsr";
+// import VueParticles from "vue-particles.js/src/vue-particles/vue-particles.vue";
+// import VueLazyload from "vue-lazyload.js"
+import intro from "~/components/intro.vue"
+import realisation from "~/components/realisation.vue"
+import techno from "~/components/techno.vue"
+import navButtons from "~/components/navbuttons.vue"
+import navButtonsUp from "~/components/navButtonsUp.vue"
+
 
 describe("index.vue", () => {
   let wrapper;
@@ -13,10 +22,27 @@ describe("index.vue", () => {
   beforeEach(() => {
     // Vue.use(router);
     Vue.use(Vuetify);
-    Vue.use(intro);
+    // Vue.use(VueParticles);
+    // Vue.use(VueLazyload);
+    // Vue.use(NoSsr);
+    // Vue.use(Fullpage);
+    Vue.use(intro)
+    Vue.use(realisation);
+    Vue.use(techno);
+    Vue.use(navButtons);
+    Vue.use(navButtonsUp);
+    
 
     wrapper = mount(index, {
-      intro
+      // VueParticles,
+      // VueLazyload,
+      // NoSsr,
+      // Fullpage,
+      intro,
+      realisation,
+      techno,
+      navButtons,
+      navButtonsUp
     });
   });
 
