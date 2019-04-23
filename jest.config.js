@@ -11,6 +11,7 @@ module.exports = {
     "^~/(.*)$": "<rootDir>/$1",
     "^~~/(.*)$": "<rootDir>/$1"
   },
+  collectCoverage: true,
   collectCoverageFrom: [
     "<rootDir>/components/*.vue",
     "<rootDir>/pages/*.vue"
