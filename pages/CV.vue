@@ -109,7 +109,7 @@ export default {
           job: "Développeur Front-end",
           entreprise: "Akeros",
           travail:
-            "Développement d'une page de supervision de drones et de pages permettants de commander un robot. Technos VueJS, Nuxt"
+            "Développement d'une page de supervision de drones et de pages permettant de commander un robot. Technos VueJS, Nuxt"
         },
         {
           date: "2016",

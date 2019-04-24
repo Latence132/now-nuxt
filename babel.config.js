@@ -1,6 +1,10 @@
 module.exports = {
   presets: [
-    "@babel/preset-env"
+    ["@babel/preset-env", {
+      "useBuiltIns": false,
+    }],
   ],
-  plugins: ['dynamic-import-node']
+  plugins: [
+    "@babel/plugin-transform-runtime","@babel/plugin-syntax-dynamic-import"
+  ]
 }
