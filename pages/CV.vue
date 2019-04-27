@@ -1,7 +1,7 @@
 <template lang="pug">
 v-flex.black--text(id="cvWrapper" style="background-color: white;" )
   // First banner
-  v-parallax(id="parallax" src="/mer_ecran1.png" height="110" width="100%")
+  v-parallax(id="parallax" src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" height="110" width="100%")
     v-layout(id="cvUpperBanner" xs12 wrap align-center )
       v-flex.ml-0.text-xs-center(xs4)
         img.mt-2.pt-2(v-lazy='photo_cv_petit' alt="alexandre_chaumet_photo" style="height: 100px;	width: auto; border-radius:50px;")
