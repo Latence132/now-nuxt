@@ -3,7 +3,7 @@
     <full-page id="idFullPage" ref="fullpage" :options="options">
       <!-- class section is for the fullpage-vue -->
       <div class="section" :style="styleBg">
-        <video-bg :sources="[videoBg1]" autoplay muted loop>
+        <video-bg :sources="[videoBg1]" autoplay muted loop :controls="controls">
           <intro :textSize="textSizeIntro"/>
         </video-bg>
       </div>
@@ -15,7 +15,7 @@
       </div>
       <!-- petits devs -->
       <div class="section" :style="styleBg">
-        <video-bg :sources="[videoBg3]" autoplay muted loop>
+        <video-bg :sources="[videoBg3]" autoplay muted loop :controls="controls">
           <realisation :textSize="textSizeRealisation" :imageSize="imageCardSize"/>
         </video-bg>
         <navButtonsUp @move="move"></navButtonsUp>
