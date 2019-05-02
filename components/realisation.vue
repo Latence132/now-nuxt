@@ -35,15 +35,18 @@
             <v-card-actions>
               <v-flex class="text-truncate">
                 <v-btn flat color="orange">
-                  <a v-if="realisation.textLien"
+                  <a
+                    v-if="realisation.textLien"
                     :href="realisation.lien"
                     class="orange--text"
                     :style="textSize"
                   >{{ realisation.textLien }}</a>
-                  <a v-else
+                  <a
+                    v-else
                     :href="realisation.lien"
                     class="orange--text"
                     :style="textSize"
+                    target="_blank"
                   >{{realisation.lien}}</a>
                 </v-btn>
               </v-flex>
@@ -70,15 +73,15 @@ export default {
     return {
       realisations: [
         {
-          title: "Cette page",
+          title: "fleetmanager",
           image: {
             class: "black--text",
-            src: "sea_bg.png"
+            src: "Fleetmanager.png"
           },
-          content: `Cette page même qui sert simplement à être jolie`,
-          technos: ["Vuejs", "Nuxt"],
-          lien: "/",
-          textLien: "ici"
+          content: `Pendant mon stage chez Akeros, j'ai pu développé deux pages sur l'application fleetmanager. C'est une application de supervision de drones`,
+          technos: ["Vuejs", "Nuxt", "OSM", "leaflet"],
+          lien: "https://fleet-akeros.now.sh/dataAndWarning"
+          // textLien: "fleetmanager"
         },
         {
           title: "Inspirateur Littéraire",

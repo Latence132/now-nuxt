@@ -3,7 +3,7 @@
     <full-page id="idFullPage" ref="fullpage" :options="options">
       <!-- class section is for the fullpage-vue -->
       <div class="section" :style="styleBg">
-        <video-bg :sources="[videoBg1]" autoplay muted loop :controls="controls">
+        <video-bg :sources="[videoBg1]" autoplay muted loop :controls="controls" v-lazy="image1">
           <intro :textSize="textSizeIntro"/>
         </video-bg>
       </div>
@@ -15,7 +15,7 @@
       </div>
       <!-- petits devs -->
       <div class="section" :style="styleBg">
-        <video-bg :sources="[videoBg3]" autoplay muted loop :controls="controls">
+        <video-bg :sources="[videoBg3]" autoplay muted loop :controls="controls" v-lazy="image1">
           <realisation :textSize="textSizeRealisation" :imageSize="imageCardSize"/>
         </video-bg>
         <navButtonsUp @move="move"></navButtonsUp>
@@ -60,6 +60,7 @@ export default {
       },
       videoBg1: "bg-1.mp4",
       videoBg3: "bg-3.mp4",
+      image1: "sea_bg.png",
       options: {
         sectionsColor: ["#1976D2"],
         licenceKey: "OPEN-SOURCE-GPLV3-LICENSE"
