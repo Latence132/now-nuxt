@@ -74,7 +74,7 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['nuxt-babel'],
+  modules: ['nuxt-babel','nuxt-user-agent'],
 
 
   /*

@@ -3,10 +3,31 @@
     <full-page id="idFullPage" ref="fullpage" :options="options">
       <!-- class section is for the fullpage-vue -->
       <div class="section" :style="styleBg">
-        <video-bg :sources="[videoBg1]" autoplay muted loop :controls="controls" v-lazy="image1">
+        <video-bg :sources="[videoBg1]" autoplay muted loop v-lazy="image1">
           <intro :textSize="textSizeIntro"/>
+            <section style="position : absolute; top: 50px; left:50px">
+              {{$ua._parsed.name}}
+            <div v-if="$ua.isFromPc()">
+              <span>PC</span>
+            </div>
+            <div v-if="$ua.isFromSmartphone()">
+              <span>Smartphone</span>
+            </div>
+            <div v-if="$ua.isFromMobilephone()">
+              <span>Mobilephone</span>
+            </div>
+            <div v-if="$ua.isFromTablet()">
+              <span>Tablet</span>
+            </div>
+            <div v-if="$ua.isFromAppliance()">
+              <span>Appliance</span>
+            </div>
+            <div v-if="$ua.isFromCrawler()">
+              <span>Crawler</span>
+            </div>
+          </section>
         </video-bg>
-      </div>
+      </div>  
       <!-- techno -->
       <div class="section">
         <particulesBg/>
@@ -15,7 +36,7 @@
       </div>
       <!-- petits devs -->
       <div class="section" :style="styleBg">
-        <video-bg :sources="[videoBg3]" autoplay muted loop :controls="controls" v-lazy="image1">
+        <video-bg :sources="[videoBg3]" autoplay muted loop  v-lazy="image1">
           <realisation :textSize="textSizeRealisation" :imageSize="imageCardSize"/>
         </video-bg>
         <navButtonsUp @move="move"></navButtonsUp>
@@ -46,6 +67,8 @@ export default {
   },
   data() {
     return {
+      ua:null,
+      deviceType:null,
       styleParticles: {
         position: "absolute",
         left: "0",
@@ -139,7 +162,14 @@ export default {
       }
     }
   },
+  mounted(){
+    this.something()    
+  },
   methods: {
+    something() {
+    this.deviceType = this.$ua.deviceType()
+    this.ua = this.$ua
+  },
     move(direction) {
       direction === "up"
         ? this.$refs.fullpage.api.moveSectionUp()
