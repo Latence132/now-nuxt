@@ -6,7 +6,8 @@
         <video-bg :sources="[videoBg1]" autoplay muted loop v-lazy="image1">
           <intro :textSize="textSizeIntro"/>
             <section style="position : absolute; top: 50px; left:50px">
-              {{$ua._parsed.name}}
+             <span>Wellcome</span>  <br/>
+             {{$ua._parsed.name}}
             <div v-if="$ua.isFromPc()">
               <span>PC</span>
             </div>
@@ -35,7 +36,7 @@
         <navButtons @move="move"></navButtons>
       </div>
       <!-- petits devs -->
-      <div class="section" :style="styleBg">
+      <div class="section" :style="[styleBg, styleBgReal]">
         <video-bg :sources="[videoBg3]" autoplay muted loop  v-lazy="image1">
           <realisation :textSize="textSizeRealisation" :imageSize="imageCardSize"/>
         </video-bg>
@@ -77,6 +78,9 @@ export default {
         marginRight: "auto",
         width: "100%",
         transform: "translate(0%, -50%)"
+      },
+      styleBgReal:{
+        "background-color" : "#1976D2"
       },
       styleBg: {
         "background-size": "cover"
