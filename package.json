@@ -1,9 +1,8 @@
 {
   "name": "devweb",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Une page jolie",
   "author": "Alexandre Chaumet",
-  "private": true,
   "scripts": {
     "dev": "nuxt",
     "build": "nuxt build",

@@ -207,8 +207,8 @@ export default {
           titre: "Outils de développement",
           list: [
             "Bootstrap4, Semantic-UI, Vuetify",
-            "Nuxt, VueJS, NodeJS, Angular6, JQuery",
-            "Symfony 3, Webpack, Git"
+            "VueJS, Nuxt, NodeJS, Angular6, JQuery",
+            "Symfony 3, Webpack, Git, Docker, Jest"
           ]
         }
       ],
@@ -216,7 +216,7 @@ export default {
       contact: {
         email: "alexandre.chaumet@gadz.org",
         tel: " 06 06 98 57 51",
-        adresse: "14 rue des fleurs (33320) Eysines"
+        adresse: "02 place Vincent Van Gogh 33700 Mérignac"
       }
     };
   }

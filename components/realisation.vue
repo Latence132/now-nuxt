@@ -40,6 +40,7 @@
                     :href="realisation.lien"
                     class="orange--text"
                     :style="textSize"
+                    target="_blank"
                   >{{ realisation.textLien }}</a>
                   <a
                     v-else

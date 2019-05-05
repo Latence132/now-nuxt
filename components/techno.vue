@@ -18,6 +18,11 @@
                 v-flex(v-for="image,index in listBack" :key="index" pa-1 ma-1  text-xs-center )
                   v-card.elevation-10
                     img(v-lazy="image.src" :alt="image.alt" :style="imgResponsive")
+        v-flex
+            v-layout(row wrap  pa-1 justify-space-around )
+                v-flex(v-for="image,index in devTools" :key="index" pa-1 ma-1  text-xs-center )
+                  v-card.elevation-10
+                    img(v-lazy="image.src" :alt="image.alt" :style="imgResponsive")
 </template>
 
 <script>
@@ -41,6 +46,12 @@ export default {
         { src: "Node.js_logo_200px.png", alt: "nodejs_logo" },
         { src: "php-200px_150px_logo.png", alt: "php_logo" },
         { src: "Java_Logo_107px_200px.png", alt: "java_logo" }
+      ],
+      devTools: [
+        {src:"docker_256px.png", alt:"docker_logo"},
+        {src:"now_256px.jpeg", alt:"now_logo"},
+        {src:"jest_256px.png", alt:"jest_logo"},
+        {src:"git_256px.png", alt:"git_logo"}
       ]
     };
   },
