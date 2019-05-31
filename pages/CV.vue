@@ -20,17 +20,29 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
               img(v-lazy='competences_transparent' alt="competences")
             v-flex.mt-1.headline Compétences
         v-layout( wrap v-for="(competence, index) in competences" :key="index+'_competence'")
-          v-flex(xs12)
-            h5.title {{ competence.titre }}
-          v-flex.text-xs-left(xs12 v-for="(item, index) in competence.list" :key="index+'travail'" ) {{ item }}
-
+          v-flex.text-xs-left(xs12 v-for="(item, index) in competence.list" :key="index+'travail'" :style="competence.css" ).pl-2 {{ item }}
+        //Techniques
+        v-flex
+            <i class="material-icons">build</i>
+            span.mt-1.headline Techniques
+        
+        v-layout( wrap v-for="(technique, index) in techniques" :key="index+'technique'").pl-2.align-center 
+          v-flex(xs2).text-xs-left.font-weight-bold.pa-a.ma-a  {{technique.nom}} 
+          v-layout(wrap row).text-xs-left 
+            v-flex(style="border: 1px dotted teal;" v-if="technique.niveau") 
+              div( v-if="technique.niveau" :style="technique.niveau" :class="[technique.cssClass]").text-xs-right.elevation-4  
+                <i style="opacity:0;" class="material-icons">trending_up</i>
+              div(v-else)  {{technique.lib}}
+            v-flex.pt-1(xs1 v-if="technique.niveau") {{ technique.niveau.width }}
+          v-flex(xs2).text-xs-right.pr-2.align-center  {{ technique.exp}}
+          v-flex(xs12).text-xs-left.pl-2 {{ technique.lib }}
         //Langues
         h4
           v-layout(wrap row )
             v-flex
               img(v-lazy='langues' alt="langues")
             v-flex.mt-1.headline Langues
-        v-flex.text-xs-left {{langue.nom}} {{langue.niv}}
+        v-flex.text-xs-left.font-weight-bold.pl-2 {{langue.nom}} {{langue.niv}}
 
       //Contact
       v-flex.elevation-10.mt-2(id="cvContact" )
@@ -68,7 +80,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
         h4
           v-layout(wrap row )
             v-flex
-             img(v-lazy='formation.png' alt="formation")
+             img(v-lazy='formation' alt="formation")
             v-flex.mt-2.headline Formations
         v-layout( wrap v-for="(formation, index) in formations" :key="index")
           v-flex.pl-2.text-xs-left(xs2) {{ formation.date }}
@@ -185,37 +197,64 @@ export default {
       ],
       competences: [
         {
-          titre: "Développer une application client-serveur",
           list: [
-            "Maquetter une application",
-            "Concevoir une base de données",
-            "Mettre en place une base de données",
-            "Développer une interface utilisateur",
-            "Développer des composants d'accès aux données"
-          ]
+            "Développer une application (web, client-server)",
+            "Développement applicatif",
+            "Conception SQL",
+            "Conduite de projet"
+          ],
+          css: { fontSize: "1.2rem" }
+        }
+      ],
+      techniques: [
+        {
+          nom: "HTML/CSS",
+          niveau: { width: "80%" },
+          cssClass: ["cyan darken-3"],
+          exp: "2 ans",
+          lib: "Bootstrap, Materliaze.css, Vuetify, Semantic-UI"
         },
         {
-          titre: "Développer une application web",
-          list: [
-            "Développer des pages web en lien avec une base de données",
-            "Mettre en oeuvre une solution de gestion de contenu ou e-commerce",
-            "Développer une application simple de mobilité numérique"
-          ]
+          nom: "JavaScript",
+          niveau: { width: "75%" },
+          cssClass: ["cyan darken-2"],
+          exp: "2 ans",
+          lib: "Vuejs, Reactjs, Angular2, Nodejs, JQuery"
         },
-        { titre: "Langages", list: ["HTML, CSS, JavaScript, PHP, JAVA, SQL"] },
         {
-          titre: "Outils de développement",
-          list: [
-            "Bootstrap4, Semantic-UI, Vuetify",
-            "VueJS, Nuxt, NodeJS, Angular6, JQuery",
-            "Symfony 3, Webpack, Git, Docker, Jest"
-          ]
+          nom: "JAVA",
+          niveau: { width: "50%" },
+          cssClass: ["cyan  darken-1"],
+          exp: "",
+          lib: "JSP, Struts"
+        },
+        {
+          nom: "PHP",
+          niveau: { width: "50%" },
+          cssClass: ["cyan  darken-1"],
+          exp: "",
+          lib: "Symfony 3"
+        },
+        {
+          nom: "SQL",
+          niveau: { width: "90%" },
+          cssClass: ["cyan darken-4"],
+          exp: "~5 ans",
+          lib: "Oracle, SQL Server,TeraData, MySql, MongoDB"
+        },
+        {
+          nom: "Outils",
+          // niveau: { width: "90%" },
+          // cssClass: ["cyan darken-4"],
+          exp: "",
+          lib:
+            "Test: Jest, Deploiement: Now, Versioning: Git, Container: Docker"
         }
       ],
       langue: { nom: "Anglais", niv: "courant" },
       contact: {
         email: "alexandre.chaumet@gadz.org",
-        tel: " 06 06 98 57 51",
+        tel: "06 06 98 57 51",
         adresse: "02 place Vincent Van Gogh 33700 Mérignac"
       }
     };
