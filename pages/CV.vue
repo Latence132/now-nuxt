@@ -13,7 +13,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
     v-flex.text-xs-center(xs12 sm4 id="cvLeft")
 
       // Compétences
-      v-flex.pt-1.elevation-6(id="cvCompetences")
+      v-flex.mt-1.mx-1.elevation-6(id="cvCompetences")
         h4
           v-layout(wrap row )
             v-flex
@@ -25,16 +25,15 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
         v-flex
             <i class="material-icons">build</i>
             span.mt-1.headline Techniques
-        
         v-layout( wrap v-for="(technique, index) in techniques" :key="index+'technique'").pl-2.align-center 
-          v-flex(xs2).text-xs-left.font-weight-bold.pa-a.ma-a  {{technique.nom}} 
+          v-flex(xs3).text-xs-left.font-weight-bold.pa-a.ma-a  {{technique.nom}} 
           v-layout(wrap row).text-xs-left 
             v-flex(style="border: 1px dotted teal;" v-if="technique.niveau") 
               div( v-if="technique.niveau" :style="technique.niveau" :class="[technique.cssClass]").text-xs-right.elevation-4  
                 <i style="opacity:0;" class="material-icons">trending_up</i>
               div(v-else)  {{technique.lib}}
-            v-flex.pt-1(xs1 v-if="technique.niveau") {{ technique.niveau.width }}
-          v-flex(xs2).text-xs-right.pr-2.align-center  {{ technique.exp}}
+            v-flex.my-auto(xs1 v-if="technique.niveau") {{ technique.niveau.width }}
+          v-flex(xs2).text-xs-right.pr-2.align-center.my-auto  {{ technique.exp}}
           v-flex(xs12).text-xs-left.pl-2 {{ technique.lib }}
         //Langues
         h4
@@ -44,8 +43,22 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
             v-flex.mt-1.headline Langues
         v-flex.text-xs-left.font-weight-bold.pl-2 {{langue.nom}} {{langue.niv}}
 
+      
+      //Réalisations
+      v-flex.elevation-10.mt-2.mx-1(id="cvRealisation" )
+        h4 
+          img(v-lazy='contact_transparent' alt="contact") 
+        span Réalisations
+        v-layout(wrap column)
+          v-flex(v-for="(realisation, index) in realisations" :key="index")
+           v-layout(wrap row)
+            v-flex {{realisation.adresse}}
+            v-flex {{realisation.technos}}
+            v-flex {{ realisation.perso}}
+
+      
       //Contact
-      v-flex.elevation-10.mt-2(id="cvContact" )
+      v-flex.elevation-10.mt-2.mx-1(id="cvContact" )
         h4
           img(v-lazy='contact_transparent' alt="contact")
         v-flex
@@ -55,25 +68,29 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
         v-flex {{contact.tel}} <br/> {{contact.adresse}}
 
     v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
-
       //Expériences professionnelles
-      v-flex.pt-1(id="cvExps")
+      v-flex.mt-1(id="cvExps")
         h4
           v-layout(wrap row )
             v-flex
               img(v-lazy='experiences' alt="experiences")
             v-flex.mt-1.headline Expériences professionnelles
-        v-layout(  justify-center wrap v-for="(expPro, index) in expPros" :key="index")
-          v-flex.text-xs-left.expDate(xs2) 
-            span.ml-2 {{ expPro.date }}
-            img(v-lazy='expPro.logo' alt="logo_entreprise" style="height: 50px; width: auto;")
-            | {{ expPro.temps }}
-          v-flex.text-xs-left(xs10)
-            v-layout(wrap)
-              v-flex(xs12 )
-                strong.title {{ expPro.job }}
-              v-flex.subheading(xs12) {{ expPro.entreprise }}, {{expPro.lieu}}
-              v-flex.subheading(xs12) {{ expPro.travail }}
+        v-layout(justify-center wrap v-for="(expPro, index) in expPros" :key="index")
+          v-flex(xs4 )
+            v-layout(wrap )
+              v-flex(xs4)
+                strong {{ expPro.date }} {{ expPro.temps }}
+              v-flex(xs4)
+                v-flex
+                  img(v-lazy='expPro.logo' alt="logo_entreprise" style="height: 50px; width: auto;")
+                
+              v-flex(xs4)
+                strong.title  {{ expPro.entreprise }}  
+                v-flex  {{expPro.lieu}}
+          v-flex.text-xs-left
+            strong.title {{ expPro.job }}
+          v-flex.text-xs-left.subheading.mx-1.mb-3(offset-xs-3 xs9) 
+            pre {{ expPro.travail }}
 
       //Formations
       v-flex.mt-1(id="cvFormations")
@@ -110,8 +127,9 @@ export default {
           lieu: "Gradignan (33)",
           job: "Développeur Web",
           entreprise: "Celad",
-          travail:
-            "Développement d'une application de gestion administratif des groupements d'hopitaux. Technos VueJS, Uniface"
+          travail: `Client: Agfa. 
+Développement d'interfaces utilisateurs pour une solution d'e-santé. Traduction des fonctionnalités métiers en services.
+Technos HTML/CSS, VueJS, Uniface.`
         },
         {
           date: "2018",
@@ -120,8 +138,8 @@ export default {
           lieu: "Mérignac (33)",
           job: "Développeur Front-end",
           entreprise: "Akeros",
-          travail:
-            "Développement d'une page de supervision de drones et de pages permettant de commander un robot. Technos VueJS, Nuxt"
+          travail: `Développement de deux pages pour une application de supervision de drones (Fleet Manager). Développement d'interfaces de commande de robots.
+Technos HTML/CSS (Vuetify), JavaScript (Vuejs, Nuxt, OpenStreetMap, Leaflet, websocket).`
         },
         {
           date: "2016",
@@ -130,28 +148,28 @@ export default {
           lieu: "La défense (92)",
           job: "Ingénieur solution SCADA",
           entreprise: "Alten SIR",
-          travail:
-            "Client: Air Liquide Service. Installation, maintenance et evolution de solutions applicatives d'acquisition et d'historisation de données"
+          travail: `Client: Air Liquide Service. 
+Déploiement de nouvelles solutions de supervision. Vérification du bon fonctionnement des solutions déployées. Support niveau 3.`
         },
         {
           date: "2014",
           temps: "1,5 an",
           logo: "alten.png",
           lieu: "Arceuil (94)",
-          job: "Contrôleur de base de données",
+          job: "Conception SQL (Contrôleur de base de données)",
           entreprise: "Alten SIR",
-          travail:
-            "Client: Orange .Fiabilisation et migration du parc commercial depuis l'ancien CRM de Wanadoo sur le nouveau d'Orange"
+          travail: `Client: Orange. 
+Conception de scripts SQL assurants les phases: extraction, consolidation, création d'indicateur décisionnel pour les projets de migrations. Correction d‘anomalies fonctionnelles.`
         },
         {
           date: "2013",
           temps: "1,5 an",
           logo: "solutec.png",
           lieu: "Massy (92)",
-          job: "Analyste de base données",
+          job: "Conception SQL (Analyste de base données)",
           entreprise: "Solutec",
-          travail:
-            "Client: Carrefour. Réalisation d'études et d'extractions ad hoc en SQL"
+          travail: `Client: Carrefour. 
+Conception de scripts SQL pour répondre aux études Ad hoc.`
         },
         {
           date: "2009",
@@ -160,8 +178,17 @@ export default {
           lieu: "Caligny (61)",
           job: "Apprenti qualiticien produit/process",
           entreprise: "Faurecia",
-          travail:
-            "Développement de macros VBA permettant de piloter informatiquement des indicateurs de non-qualités"
+          travail: `Gestion de projets – amélioration de la qualité des poignées à pompages. Refonte de la maille de traçabilité de la matière première. Développement d’une application de gestion des dérogation en VBA.`
+        },
+        {
+          date: "2007",
+          temps: "4 mois",
+          logo: "codra.png",
+          lieu: "Courtaboeuf (91)",
+          job: "Développeur C#",
+          entreprise: "Codra",
+          travail: `Développer un module permettant à PANORAMA de communiquer avec un modem téléphonique pour acquitter des alarmes par SMS.
+Techos: C#, .NET`
         }
       ],
       formations: [
@@ -239,23 +266,33 @@ export default {
           nom: "SQL",
           niveau: { width: "90%" },
           cssClass: ["cyan darken-4"],
-          exp: "~5 ans",
+          exp: "5 ans",
           lib: "Oracle, SQL Server,TeraData, MySql, MongoDB"
         },
         {
           nom: "Outils",
-          // niveau: { width: "90%" },
-          // cssClass: ["cyan darken-4"],
           exp: "",
           lib:
             "Test: Jest, Deploiement: Now, Versioning: Git, Container: Docker"
+        }
+      ],
+      realisations: [
+        {
+          adresse: "https://devweb.latence132.now.sh",
+          technos: "Vues,Vuetify, Nuxt, Now, Jest",
+          perso: true
+        },
+        {
+          adresse: "https://ReactApp.latence132.now.sh",
+          technos: "Reactjs, Materliaze.css, Now, Jest",
+          perso: true
         }
       ],
       langue: { nom: "Anglais", niv: "courant" },
       contact: {
         email: "alexandre.chaumet@gadz.org",
         tel: "06 06 98 57 51",
-        adresse: "02 place Vincent Van Gogh 33700 Mérignac"
+        adresse: "2 place Vincent Van Gogh 33700 Mérignac"
       }
     };
   }
@@ -284,5 +321,13 @@ div >>> .expDate {
 .subheading {
   padding: 0;
   margin: 0;
+}
+
+pre {
+  white-space: pre-wrap; /* Since CSS 2.1 */
+  white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+  white-space: -pre-wrap; /* Opera 4-6 */
+  white-space: -o-pre-wrap; /* Opera 7 */
+  word-wrap: break-word; /* Internet Explorer 5.5+ */
 }
 </style>
