@@ -46,15 +46,14 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
       
       //Réalisations
       v-flex.elevation-10.mt-2.mx-1(id="cvRealisation" )
-        h4 
-          img(v-lazy='contact_transparent' alt="contact") 
-        span Réalisations
+        i.material-icons developer_mode
+        h4.title Réalisations
         v-layout(wrap column)
           v-flex(v-for="(realisation, index) in realisations" :key="index")
            v-layout(wrap row)
-            v-flex {{realisation.adresse}}
-            v-flex {{realisation.technos}}
-            v-flex {{ realisation.perso}}
+            v-flex.pl-4.text-xs-left 
+              a(:href="realisation.adresse" target="_blank") {{realisation.adresse}}
+            v-flex.pr-4.text-xs-right {{realisation.technos}}
 
       
       //Contact
@@ -80,10 +79,11 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
             v-layout(wrap )
               v-flex(xs4)
                 strong {{ expPro.date }} {{ expPro.temps }}
+                br
+                strong(v-if="expPro.tempsCal") {{ tempsCal }} mois
               v-flex(xs4)
                 v-flex
                   img(v-lazy='expPro.logo' alt="logo_entreprise" style="height: 50px; width: auto;")
-                
               v-flex(xs4)
                 strong.title  {{ expPro.entreprise }}  
                 v-flex  {{expPro.lieu}}
@@ -111,6 +111,11 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
 
 <script>
 export default {
+  //agit sur la création d'un composant
+  mounted: function() {
+    this.tempsCal = new Date("November 2018, 09:00:00").getMonth();
+    this.tempsCal -= 2;
+  },
   data() {
     return {
       formation: "formation.png",
@@ -119,10 +124,12 @@ export default {
       langues: "langues.png",
       competences_transparent: "competences_transparent.png",
       photo_cv_petit: "photo_cv_petit.png",
+      tempsCal: null,
       expPros: [
         {
-          date: "Nov",
-          temps: "2018",
+          date: "Nov 2018",
+          temps: "actuel",
+          tempsCal: true,
           logo: "celad.png",
           lieu: "Gradignan (33)",
           job: "Développeur Web",
@@ -133,7 +140,7 @@ Technos HTML/CSS, VueJS, Uniface.`
         },
         {
           date: "2018",
-          temps: "1,5 mois",
+          temps: "2 mois",
           logo: "akeros.png",
           lieu: "Mérignac (33)",
           job: "Développeur Front-end",
@@ -145,7 +152,7 @@ Technos HTML/CSS (Vuetify), JavaScript (Vuejs, Nuxt, OpenStreetMap, Leaflet, web
           date: "2016",
           temps: "1,5 an",
           logo: "alten.png",
-          lieu: "La défense (92)",
+          lieu: "Boulogne (92)",
           job: "Ingénieur solution SCADA",
           entreprise: "Alten SIR",
           travail: `Client: Air Liquide Service. 
@@ -155,7 +162,7 @@ Déploiement de nouvelles solutions de supervision. Vérification du bon fonctio
           date: "2014",
           temps: "1,5 an",
           logo: "alten.png",
-          lieu: "Arceuil (94)",
+          lieu: "Boulogne(92)",
           job: "Conception SQL (Contrôleur de base de données)",
           entreprise: "Alten SIR",
           travail: `Client: Orange. 
@@ -165,7 +172,7 @@ Conception de scripts SQL assurants les phases: extraction, consolidation, créa
           date: "2013",
           temps: "1,5 an",
           logo: "solutec.png",
-          lieu: "Massy (92)",
+          lieu: "Paris (75)",
           job: "Conception SQL (Analyste de base données)",
           entreprise: "Solutec",
           travail: `Client: Carrefour. 
@@ -279,13 +286,15 @@ Techos: C#, .NET`
       realisations: [
         {
           adresse: "https://devweb.latence132.now.sh",
-          technos: "Vues,Vuetify, Nuxt, Now, Jest",
-          perso: true
+          technos: "Vuejs, Vuetify"
         },
         {
-          adresse: "https://ReactApp.latence132.now.sh",
-          technos: "Reactjs, Materliaze.css, Now, Jest",
-          perso: true
+          adresse: "https://my-react-app.latence132.now.sh/",
+          technos: "Reactjs, Materliaze.css"
+        },
+        {
+          adresse: "http://chaumetsoftware.com/InspirateurLitteraire/",
+          technos: "PHP, Bootstrap"
         }
       ],
       langue: { nom: "Anglais", niv: "courant" },
@@ -313,9 +322,14 @@ div >>> .expDate {
   margin: 0 !important;
 }
 
-#cvContact, #cvFormations, #cvCompetences, #cvExps, #parallax {
+#cvContact, #cvFormations, #cvCompetences, #cvExps, #parallax, #cvRealisation {
   border-radius: 4px;
   border: 1px solid black;
+  padding-top: 3px;
+}
+
+#cvContact {
+  padding-top: 0px;
 }
 
 .subheading {
