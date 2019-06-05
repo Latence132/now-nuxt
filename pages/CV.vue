@@ -295,7 +295,8 @@ Techos: C#, .NET`
         {
           adresse: "http://chaumetsoftware.com/InspirateurLitteraire/",
           technos: "PHP, Bootstrap"
-        }
+        },
+        { adresse: "https://github.com/latence132", technos: "Github" }
       ],
       langue: { nom: "Anglais", niv: "courant" },
       contact: {
