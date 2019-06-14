@@ -51,9 +51,11 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
         v-layout(wrap column)
           v-flex(v-for="(realisation, index) in realisations" :key="index")
            v-layout(wrap row)
-            v-flex.pl-4.text-xs-left 
+            v-flex.pl-1.text-xs-left(v-if="realisation.css" :style="realisation.css") 
               a(:href="realisation.adresse" target="_blank") {{realisation.adresse}}
-            v-flex.pr-4.text-xs-right {{realisation.technos}}
+            v-flex.pl-1.text-xs-left(v-else) 
+              a(:href="realisation.adresse" target="_blank") {{realisation.adresse}}
+            v-flex.pr-1.text-xs-right {{realisation.technos}}
 
       
       //Contact
@@ -62,8 +64,6 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
           img(v-lazy='contact_transparent' alt="contact")
         v-flex
           strong(style="font-size: 1.2rem") {{contact.email}}
-        v-flex site perso :
-          nuxt-link(to="/") ici
         v-flex {{contact.tel}} <br/> {{contact.adresse}}
 
     v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
@@ -100,7 +100,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
              img(v-lazy='formation' alt="formation")
             v-flex.mt-2.headline Formations
         v-layout( wrap v-for="(formation, index) in formations" :key="index")
-          v-flex.pl-2.text-xs-left(xs2) {{ formation.date }}
+          v-flex.pl-2.text-xs-left.font-weight-bold(xs2) {{ formation.date }}
             img(v-lazy='formation.logo' alt="logo_formation" style="height: 50px; width: auto;")
           v-flex.text-xs-left(xs10)
             v-layout(wrap)
@@ -166,7 +166,7 @@ Déploiement de nouvelles solutions de supervision. Vérification du bon fonctio
           job: "Conception SQL (Contrôleur de base de données)",
           entreprise: "Alten SIR",
           travail: `Client: Orange. 
-Conception de scripts SQL assurants les phases: extraction, consolidation, création d'indicateur décisionnel pour les projets de migrations. Correction d‘anomalies fonctionnelles.`
+Conception de scripts SQL assurants les phases: extraction, consolidation, création d'indicateurs décisionnels pour les projets de migrations. Correction d‘anomalies fonctionnelles.`
         },
         {
           date: "2013",
@@ -176,7 +176,7 @@ Conception de scripts SQL assurants les phases: extraction, consolidation, créa
           job: "Conception SQL (Analyste de base données)",
           entreprise: "Solutec",
           travail: `Client: Carrefour. 
-Conception de scripts SQL pour répondre aux études Ad hoc.`
+Conception de scripts SQL pour répondre aux études Ad hoc du services marketing France (connaissance client, bureau des marchandises, fidélité etc.).`
         },
         {
           date: "2009",
@@ -244,35 +244,35 @@ Techos: C#, .NET`
         {
           nom: "HTML/CSS",
           niveau: { width: "80%" },
-          cssClass: ["cyan darken-3"],
+          cssClass: ["blue"],
           exp: "2 ans",
-          lib: "Bootstrap, Materliaze.css, Vuetify, Semantic-UI"
+          lib: "Bootstrap, Materialze.css, Vuetify, Semantic-UI"
         },
         {
           nom: "JavaScript",
           niveau: { width: "75%" },
-          cssClass: ["cyan darken-2"],
+          cssClass: ["blue"],
           exp: "2 ans",
           lib: "Vuejs, Reactjs, Angular2, Nodejs, JQuery"
         },
         {
           nom: "JAVA",
           niveau: { width: "50%" },
-          cssClass: ["cyan  darken-1"],
+          cssClass: ["blue "],
           exp: "",
           lib: "JSP, Struts"
         },
         {
           nom: "PHP",
           niveau: { width: "50%" },
-          cssClass: ["cyan  darken-1"],
+          cssClass: ["blue"],
           exp: "",
           lib: "Symfony 3"
         },
         {
           nom: "SQL",
           niveau: { width: "90%" },
-          cssClass: ["cyan darken-4"],
+          cssClass: ["blue"],
           exp: "5 ans",
           lib: "Oracle, SQL Server,TeraData, MySql, MongoDB"
         },
@@ -290,11 +290,13 @@ Techos: C#, .NET`
         },
         {
           adresse: "https://my-react-app.latence132.now.sh/",
-          technos: "Reactjs, Materliaze.css"
+          technos: "Reactjs, Materialize.css",
+          css: { fontSize: "0.8rem", fontWeight: "700" }
         },
         {
           adresse: "http://chaumetsoftware.com/InspirateurLitteraire/",
-          technos: "PHP, Bootstrap"
+          technos: "PHP, Bootstrap",
+          css: { fontSize: "0.8rem", fontWeight: "700" }
         },
         { adresse: "https://github.com/latence132", technos: "Github" }
       ],
