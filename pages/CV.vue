@@ -1,7 +1,7 @@
 <template lang="pug">
 v-flex.black--text(id="cvWrapper" style="background-color: white;" )
   // First banner
-  v-parallax(id="parallax" src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" height="110" width="100%")
+  v-parallax.mx-1(id="parallax" src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" height="110" width="100%")
     v-layout(id="cvUpperBanner" xs12 wrap align-center )
       v-flex.ml-0.text-xs-center(xs4)
         img.mt-2.pt-2(v-lazy='photo_cv_petit' alt="alexandre_chaumet_photo" style="height: 100px;	width: auto; border-radius:50px;")
@@ -9,9 +9,8 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
         h2.my-auto Alexandre Chaumet
         h3.my-auto Développeur web
 
-  v-layout(wrap)
+  v-layout.mx-1(wrap)
     v-flex.text-xs-center(xs12 sm4 id="cvLeft")
-
       // Compétences
       v-flex.mt-1.mx-1.elevation-6(id="cvCompetences")
         h4
@@ -45,7 +44,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
 
       
       //Réalisations
-      v-flex.elevation-10.mt-2.mx-1(id="cvRealisation" )
+      v-flex.elevation-10.mt-5.mx-1(id="cvRealisation" )
         i.material-icons developer_mode
         h4.title Réalisations
         v-layout(wrap column)
@@ -59,7 +58,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
 
       
       //Contact
-      v-flex.elevation-10.mt-2.mx-1(id="cvContact" )
+      v-flex.elevation-10.mt-5.mx-1(id="cvContact" )
         h4
           img(v-lazy='contact_transparent' alt="contact")
         v-flex
@@ -88,7 +87,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
                 strong.title  {{ expPro.entreprise }}  
                 v-flex  {{expPro.lieu}}
           v-flex.text-xs-left
-            strong.title {{ expPro.job }}
+            strong.title - {{ expPro.job }}
           v-flex.text-xs-left.subheading.mx-1.mb-3(offset-xs-3 xs9) 
             pre {{ expPro.travail }}
 
@@ -153,7 +152,7 @@ Technos HTML/CSS (Vuetify), JavaScript (Vuejs, Nuxt, OpenStreetMap, Leaflet, web
           temps: "1,5 an",
           logo: "alten.png",
           lieu: "Boulogne (92)",
-          job: "Ingénieur solution SCADA",
+          job: " Ingénieur solution SCADA",
           entreprise: "Alten SIR",
           travail: `Client: Air Liquide Service. 
 Déploiement de nouvelles solutions de supervision. Vérification du bon fonctionnement des solutions déployées. Support niveau 3.`
@@ -163,7 +162,7 @@ Déploiement de nouvelles solutions de supervision. Vérification du bon fonctio
           temps: "1,5 an",
           logo: "alten.png",
           lieu: "Boulogne(92)",
-          job: "Conception SQL (Contrôleur de base de données)",
+          job: " Conception SQL (Contrôleur de base de données)",
           entreprise: "Alten SIR",
           travail: `Client: Orange. 
 Conception de scripts SQL assurants les phases: extraction, consolidation, création d'indicateurs décisionnels pour les projets de migrations. Correction d‘anomalies fonctionnelles.`
