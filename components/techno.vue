@@ -40,7 +40,7 @@ export default {
         { src: "Vue.js_Logo_200px_173px.png", alt: "vue_logo" },
         { src: "v_200px.png", alt: "vuetify_logo" },
         { src: "nuxt_200px_156px.png", alt: "nuxt_logo" },
-        { src: "jquery1_logo_200px_200px.png", alt: "jquery_logo" }
+        { src: "angularjs_200px.png", alt: "angular_logo" }
       ],
       listBack: [
         { src: "Node.js_logo_200px.png", alt: "nodejs_logo" },
