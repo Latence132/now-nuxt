@@ -27,7 +27,6 @@ v-flex.black--text(id="cvWrapper" style="background-color: white; width:21cm; fo
           v-flex(xs3).text-xs-left.font-weight-bold.pa-a.ma-a  {{technique.nom}} 
           v-layout(wrap row).text-xs-left 
             v-flex(wrap) {{technique.lib}}
-          // v-flex(xs12).text-xs-left.pl-2 {{ technique.lib }}
         //Langues
         h2
           v-layout(wrap row )
@@ -50,7 +49,6 @@ v-flex.black--text(id="cvWrapper" style="background-color: white; width:21cm; fo
             v-layout(wrap)
               v-flex(xs12) #[strong {{ formation.nom }}] - {{ formation.region }}
               v-flex.subheading(xs12 style="font-size: 0.6rem") {{ formation.titre }}
-
       //Certificats
       v-flex.mt-1(id="cvCertificats" style="font-size: 0.8rem")
         h2
@@ -62,6 +60,14 @@ v-flex.black--text(id="cvWrapper" style="background-color: white; width:21cm; fo
           v-flex.text-xs-left(xs9)
             v-layout(wrap)
               v-flex(xs12) #[strong {{ certificat.nom }}] - {{ certificat.organisme }}
+      
+      //Méthodologie
+      v-flex.elevation-10.mx-1.mt-2(id="cvContact")
+        h2 Méthodologie
+        v-flex Clean code
+        v-flex SOLID
+        v-flex KISS
+      
       //Contact
       v-flex.elevation-10.mx-1.mt-2(id="cvContact")
         h2
@@ -82,14 +88,20 @@ v-flex.black--text(id="cvWrapper" style="background-color: white; width:21cm; fo
         v-layout(wrap v-for="(expPro, index) in expPros" :key="index")
           v-flex(xs12)
             v-layout(wrap row align-center justify-center )
-              v-flex(xs3)
+              v-flex.text-xs-right(xs5)
                 strong {{ expPro.job }}
               v-flex.text-xs-right(xs1)
                 img(v-lazy='expPro.logo' alt="logo_entreprise" style="height: 30px; width: auto;") 
               v-flex.text-xs-left(xs5) {{ expPro.entreprise }} {{expPro.lieu}} {{ expPro.date }} - {{ expPro.temps }} 
-          v-flex.text-xs-left.subheading.mx-1.mb-1(xs12) 
-            pre(style="font-size: 0.8rem; padding:0; margin:0;") {{ expPro.travail }}
-            i(style="font-size: 0.8rem; margin-top:-5; padding-top:-5;") {{ expPro.technos }}
+          v-flex.text-xs-left.subheading.mx-1(xs12)
+            div( v-if="expPro.travails" style="font-size: 0.8rem; padding:0; margin:0;") 
+              div.mb-2(v-for="(travailScalian, index) in expPro.travails" :key="index")
+                pre(style="font-size: 0.8rem; padding:0; margin:0;") {{ travailScalian.travail }}
+                i(style="font-size: 0.8rem; margin:0; padding:0;") {{ travailScalian.technos }}
+            div(v-else)
+              pre(style="font-size: 0.8rem; padding:0; margin:0;") {{ expPro.travail }}
+              i(style="font-size: 0.8rem; margin:0; padding:0;") {{ expPro.technos }}
+
 
 </template>
 
@@ -117,30 +129,35 @@ export default {
           lieu: "Haillan (33)",
           job: "Développeur Fullstack",
           entreprise: "Scalian",
-          travail: [`Client: BPCE-SI (Banque Populaire Caisse d'Epargne) -  septembre 2021 (actuel)
-Refonte from scratch d'application exposant des informations sur les environnements.
-Développement from scratch d'une application d'extraction de jeu de données.
-Développement sur une application de supervision. Passage en HTTPS, ajout de fonctionnalités, support niv3.
-Développement sur une application de réservations. Migration d'infrastructures, ajout de fonctionnalités, support niv3.
-Développement d'une sonde Python pour tester la disponibilité d'une API.
-Technos: Java, Angular, JHipster, Maven, Spring Boot, Framework Spring, Python, PHP, Laravel, MySQL, Jenkins.
-
-Client: ASP (Agence de services de paiement) - 3 mois
-Migration d'une application de paiements de Struts vers Spring.
-Technos: Java, JSP, Framework Spring, Struts.
-
-Client: Conseil départemental de gironde -  1 an 5 mois
-Développement sur une application GED (Gestion Electronique des Documents). Montée de version via Alfresco.
-Technos: Java, Alfresco, Angular, Maven.
-
-Client: Scalian - 4 mois
-Développement sur une plateforme d'achat pour Airbus, ajout de fonctionnalités, support niv3.
-Technos: Java, SpringBoot, MapStruct, Liquibase, Elasticsearch, Angular, Gradle.
-
-Client: Sanofi - 1 mois
-Développement sur une application de commande de médicaments. Mise à jour et corrections.
-Technos: Java, Struts, Hibernate, JQuery, Ant.
-`]
+          travails: [{
+            travail:`Client: BPCE-SI (Banque Populaire Caisse d'Epargne) -  septembre 2021 (actuel)
+- Refonte from scratch d'application exposant des informations sur les environnements.
+- Développement from scratch d'une application d'extraction de jeu de données.
+- Développement d'une application de supervision: Passage en HTTPS, ajout de fonctionnalités, support niv3.
+- Développement d'une application de réservations. Migration d'infrastructures, ajout de fonctionnalités, support niv3.
+- Développement d'une sonde Python pour tester la disponibilité d'une API.`,
+            technos:"Technos: Java, Angular, JHipster, Maven, Spring Boot, Framework Spring, Python, PHP, Laravel, MySQL, Jenkins."
+          },
+          {
+            travail:`Client: ASP (Agence de services de paiement) - 3 mois
+Migration d'une application de paiements de Struts vers Spring.`,
+            technos:"Technos: Java, JSP, Framework Spring, Struts."
+          },
+          {
+            travail:`Client: Conseil départemental de gironde -  1 an 5 mois
+Développement d'une application GED (Gestion Electronique des Documents). Montée de version via Alfresco.`,
+            technos:"Technos: Java, Alfresco, Angular, Maven"
+          },
+          {
+            travail:`Client: Scalian - 4 mois
+Développement d'une  plateforme d'achat et une application exposant des projets, ajout de fonctionnalités, support niv3..`,
+            technos:"Technos: Java, SpringBoot, MapStruct, Liquibase, Elasticsearch, Angular, Gradle."
+          },
+          {
+            travail:`Client: Sanofi - 1 mois
+Développement d'une application de commande de médicaments. Mise à jour et corrections.`,
+            technos:"Technos: Java, Struts, Hibernate, JQuery, Ant."
+          }]
         },
         {
           date: "2018",
@@ -181,7 +198,7 @@ Correction d‘anomalies fonctionnelles pour migrer le parc client vers un nouve
           temps: "1,5 an",
           logo: "solutec.png",
           lieu: "Paris (75)",
-          job: "Conception de script SQL",
+          job: "Analyste de base de données",
           entreprise: "Solutec",
           travail: `Client: Carrefour. 
 Etudes et extractions ad hoc en SQL pour les services Marketing.`
@@ -320,7 +337,7 @@ h2, h5, img {
   display: inline-block;
 }
 
-#cvContact, #cvFormations, #cvCompetences, #cvExps, #parallax, #cvRealisation, #cvCertificats {
+#cvContact, #cvFormations, #cvCompetences,  #parallax, #cvRealisation, #cvCertificats, #cvRight {
   border-radius: 4px;
   border: 1px solid black;
   padding-top: 3px;
