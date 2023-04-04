@@ -15,7 +15,7 @@
     "axios": "^0.18.0",
     "nuxt": "^2.6.2",
     "nuxt-user-agent": "^1.2.1",
-    "vue-fullpage.js": "^0.1.0",
+    "vue-fullpage.js": "^0.2.13",
     "vue-lazyload": "^1.2.6",
     "vue-particles": "^1.0.9",
     "vue-videobg": "^2.0.0",
@@ -46,7 +46,7 @@
     "pug-plain-loader": "^1.0.0",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.2",
-    "vue-jest": "^4.0.0-beta.2",
+    "vue-jest": "^4.0.1",
     "webpack-node-externals": "^1.7.2"
   }
 }

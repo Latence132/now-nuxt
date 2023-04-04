@@ -1,110 +1,95 @@
 <template lang="pug">
-v-flex.black--text(id="cvWrapper" style="background-color: white;" )
-  // First banner
-  v-parallax.mx-1(id="parallax" src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" height="110" width="100%")
-    v-layout(id="cvUpperBanner" xs12 wrap align-center )
-      v-flex.ml-0.text-xs-center(xs4)
-        img.mt-2.pt-2(v-lazy='photo_cv_petit' alt="alexandre_chaumet_photo" style="height: 100px;	width: auto; border-radius:50px;")
-      v-flex.mr-0.text-xs-center(xs8 style="font-size: 1.2rem")
-        h2.my-auto Alexandre Chaumet
-        h3.my-auto Développeur web
-
-  v-layout.mx-1(wrap)
+v-flex.black--text(id="cvWrapper" style="background-color: white; width:21cm; font-size: 0.8rem" )
+  v-layout(wrap)
     v-flex.text-xs-center(xs12 sm4 id="cvLeft")
-      // Compétences
+      // First banner
+      v-parallax.mx-1(id="parallax" src="https://cdn.vuetifyjs.com/images/backgrounds/vbanner.jpg" height="80" width="100%")
+        v-layout(id="cvUpperBanner" xs12 wrap align-center )
+          v-flex.ml-0.text-xs-center(xs4)
+            img.mt-2.pt-2(v-lazy='photo_cv_petit' alt="alexandre_chaumet_photo" style="height: 100px;	width: auto; border-radius:50px;")
+          v-flex.mr-0.text-xs-center(xs8 style="font-size: 1rem")
+            h2.my-auto Alexandre Chaumet
+            h3.my-auto Développeur web
+        // Compétences
       v-flex.mt-1.mx-1.elevation-6(id="cvCompetences")
-        h4
+        h2
           v-layout(wrap row )
             v-flex
               img(v-lazy='competences_transparent' alt="competences")
-            v-flex.mt-1.headline Compétences
+            v-flex.mt-1 Compétences
         v-layout( wrap v-for="(competence, index) in competences" :key="index+'_competence'")
           v-flex.text-xs-left(xs12 v-for="(item, index) in competence.list" :key="index+'travail'" :style="competence.css" ).pl-2 {{ item }}
         //Techniques
         v-flex
             <i class="material-icons">build</i>
-            span.mt-1.headline Techniques
+            span.mt-1 Techniques
         v-layout( wrap v-for="(technique, index) in techniques" :key="index+'technique'").pl-2.align-center 
           v-flex(xs3).text-xs-left.font-weight-bold.pa-a.ma-a  {{technique.nom}} 
           v-layout(wrap row).text-xs-left 
-            v-flex(style="border: 1px dotted teal;" v-if="technique.niveau") 
-              div( v-if="technique.niveau" :style="technique.niveau" :class="[technique.cssClass]").text-xs-right.elevation-4  
-                <i style="opacity:0;" class="material-icons">trending_up</i>
-              div(v-else)  {{technique.lib}}
-            v-flex.my-auto(xs1 v-if="technique.niveau") {{ technique.niveau.width }}
-          v-flex(xs2).text-xs-right.pr-2.align-center.my-auto  {{ technique.exp}}
-          v-flex(xs12).text-xs-left.pl-2 {{ technique.lib }}
+            v-flex(wrap) {{technique.lib}}
+          // v-flex(xs12).text-xs-left.pl-2 {{ technique.lib }}
         //Langues
-        h4
+        h2
           v-layout(wrap row )
             v-flex
               img(v-lazy='langues' alt="langues")
-            v-flex.mt-1.headline Langues
+            v-flex Langues
         v-flex.text-xs-left.font-weight-bold.pl-2 {{langue.nom}} {{langue.niv}}
 
-      
-      //Réalisations
-      v-flex.elevation-10.mt-5.mx-1(id="cvRealisation" )
-        i.material-icons developer_mode
-        h4.title Réalisations
-        v-layout(wrap column)
-          v-flex(v-for="(realisation, index) in realisations" :key="index")
-           v-layout(wrap row)
-            v-flex.pl-1.text-xs-left(v-if="realisation.css" :style="realisation.css") 
-              a(:href="realisation.adresse" target="_blank") {{realisation.adresse}}
-            v-flex.pl-1.text-xs-left(v-else) 
-              a(:href="realisation.adresse" target="_blank") {{realisation.adresse}}
-            v-flex.pr-1.text-xs-right {{realisation.technos}}
-
-      
-      //Contact
-      v-flex.elevation-10.mt-5.mx-1(id="cvContact" )
-        h4
-          img(v-lazy='contact_transparent' alt="contact")
-        v-flex
-          strong(style="font-size: 1.2rem") {{contact.email}}
-        v-flex {{contact.tel}} <br/> {{contact.adresse}}
-
-    v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
-      //Expériences professionnelles
-      v-flex.mt-1(id="cvExps")
-        h4
-          v-layout(wrap row )
-            v-flex
-              img(v-lazy='experiences' alt="experiences")
-            v-flex.mt-1.headline Expériences professionnelles
-        v-layout(justify-center wrap v-for="(expPro, index) in expPros" :key="index")
-          v-flex(xs4 )
-            v-layout(wrap )
-              v-flex(xs4)
-                strong {{ expPro.date }} {{ expPro.temps }}
-                br
-                strong(v-if="expPro.tempsCal") {{ tempsCal }} mois
-              v-flex(xs4)
-                v-flex
-                  img(v-lazy='expPro.logo' alt="logo_entreprise" style="height: 50px; width: auto;")
-              v-flex(xs4)
-                strong.title  {{ expPro.entreprise }}  
-                v-flex  {{expPro.lieu}}
-          v-flex.text-xs-left
-            strong.title - {{ expPro.job }}
-          v-flex.text-xs-left.subheading.mx-1.mb-3(offset-xs-3 xs9) 
-            pre {{ expPro.travail }}
-
       //Formations
-      v-flex.mt-1(id="cvFormations")
-        h4
+      v-flex.mt-1(id="cvFormations" style="font-size: 0.8rem")
+        h2
           v-layout(wrap row )
             v-flex
              img(v-lazy='formation' alt="formation")
-            v-flex.mt-2.headline Formations
+            v-flex.mt-2 Formations
         v-layout( wrap v-for="(formation, index) in formations" :key="index")
-          v-flex.pl-2.text-xs-left.font-weight-bold(xs2) {{ formation.date }}
-            img(v-lazy='formation.logo' alt="logo_formation" style="height: 50px; width: auto;")
+          v-flex.pl-1.text-xs-left.font-weight-bold(xs2) {{ formation.date }}
+            img(v-lazy='formation.logo' alt="logo_formation" style="height: 30px; width: auto;")
           v-flex.text-xs-left(xs10)
             v-layout(wrap)
-              v-flex(xs12) #[strong.title {{ formation.nom }}]  - {{ formation.region }}
-              v-flex.subheading(xs12) {{ formation.titre }}
+              v-flex(xs12) #[strong {{ formation.nom }}] - {{ formation.region }}
+              v-flex.subheading(xs12 style="font-size: 0.6rem") {{ formation.titre }}
+
+      //Certificats
+      v-flex.mt-1(id="cvCertificats" style="font-size: 0.8rem")
+        h2
+          v-layout(wrap row )
+            v-flex.mt-2 Certificats
+        v-layout( wrap v-for="(certificat, index) in certificats" :key="index")
+          v-flex.pl-1.text-xs-left.font-weight-bold(xs3) {{ certificat.date }} 
+            img(v-lazy='certificat.logo' alt="logo_formation" style="height: 30px; width: auto;")
+          v-flex.text-xs-left(xs9)
+            v-layout(wrap)
+              v-flex(xs12) #[strong {{ certificat.nom }}] - {{ certificat.organisme }}
+      //Contact
+      v-flex.elevation-10.mx-1.mt-2(id="cvContact")
+        h2
+          img(v-lazy='contact_transparent' alt="contact")
+        v-flex
+          strong(style="font-size: 1rem") {{contact.email}}
+        v-flex {{contact.tel}} <br/> {{contact.adresse}}
+
+
+    v-flex.elevation-6.text-xs-center(xs12 sm8 id="cvRight")
+      //Expériences professionnelles
+      v-flex(id="cvExps" style="font-size: 0.8rem")
+        h2
+          v-layout(wrap row )
+            v-flex
+              img(v-lazy='experiences' alt="experiences")
+            v-flex Expériences professionnelles
+        v-layout(wrap v-for="(expPro, index) in expPros" :key="index")
+          v-flex(xs12)
+            v-layout(wrap row align-center justify-center )
+              v-flex(xs3)
+                strong {{ expPro.job }}
+              v-flex.text-xs-right(xs1)
+                img(v-lazy='expPro.logo' alt="logo_entreprise" style="height: 30px; width: auto;") 
+              v-flex.text-xs-left(xs5) {{ expPro.entreprise }} {{expPro.lieu}} {{ expPro.date }} - {{ expPro.temps }} 
+          v-flex.text-xs-left.subheading.mx-1.mb-1(xs12) 
+            pre(style="font-size: 0.8rem; padding:0; margin:0;") {{ expPro.travail }}
+            i(style="font-size: 0.8rem; margin-top:-5; padding-top:-5;") {{ expPro.technos }}
 
 </template>
 
@@ -112,7 +97,7 @@ v-flex.black--text(id="cvWrapper" style="background-color: white;" )
 export default {
   //agit sur la création d'un composant
   mounted: function() {
-    this.tempsCal = new Date("November 2018, 09:00:00").getMonth();
+    this.tempsCal = new Date("Septembre 2021, 09:00:00").getMonth();
     this.tempsCal -= 2;
   },
   data() {
@@ -126,56 +111,80 @@ export default {
       tempsCal: null,
       expPros: [
         {
-          date: "Nov 2018",
-          temps: "actuel",
-          tempsCal: true,
+          date: "2019",
+          temps: "3 ans 7 mois",
+          logo: "scalian.png",
+          lieu: "Haillan (33)",
+          job: "Développeur Fullstack",
+          entreprise: "Scalian",
+          travail: [`Client: BPCE-SI (Banque Populaire Caisse d'Epargne) -  septembre 2021 (actuel)
+Refonte from scratch d'application exposant des informations sur les environnements.
+Développement from scratch d'une application d'extraction de jeu de données.
+Développement sur une application de supervision. Passage en HTTPS, ajout de fonctionnalités, support niv3.
+Développement sur une application de réservations. Migration d'infrastructures, ajout de fonctionnalités, support niv3.
+Développement d'une sonde Python pour tester la disponibilité d'une API.
+Technos: Java, Angular, JHipster, Maven, Spring Boot, Framework Spring, Python, PHP, Laravel, MySQL, Jenkins.
+
+Client: ASP (Agence de services de paiement) - 3 mois
+Migration d'une application de paiements de Struts vers Spring.
+Technos: Java, JSP, Framework Spring, Struts.
+
+Client: Conseil départemental de gironde -  1 an 5 mois
+Développement sur une application GED (Gestion Electronique des Documents). Montée de version via Alfresco.
+Technos: Java, Alfresco, Angular, Maven.
+
+Client: Scalian - 4 mois
+Développement sur une plateforme d'achat pour Airbus, ajout de fonctionnalités, support niv3.
+Technos: Java, SpringBoot, MapStruct, Liquibase, Elasticsearch, Angular, Gradle.
+
+Client: Sanofi - 1 mois
+Développement sur une application de commande de médicaments. Mise à jour et corrections.
+Technos: Java, Struts, Hibernate, JQuery, Ant.
+`]
+        },
+        {
+          date: "2018",
+          temps: "9 mois",
           logo: "celad.png",
           lieu: "Gradignan (33)",
-          job: "Développeur Web",
+          job: "Développeur Fullstack",
           entreprise: "Celad",
+          technos:"Technos: HTML/CSS, VueJS, Uniface.",
           travail: `Client: Agfa. 
-Développement d'interfaces utilisateurs pour une solution d'e-santé. Traduction des fonctionnalités métiers en services.
-Technos HTML/CSS, VueJS, Uniface.`
+Développement d'une application d'achat de matériel pour les groupements d'hôpitaux.`
         },
         {
           date: "2018",
           temps: "2 mois",
           logo: "akeros.png",
           lieu: "Mérignac (33)",
-          job: "Développeur Front-end",
+          job: "Stage développeur Front-end",
           entreprise: "Akeros",
-          travail: `Développement de deux pages pour une application de supervision de drones (Fleet Manager). Développement d'interfaces de commande de robots.
-Technos HTML/CSS (Vuetify), JavaScript (Vuejs, Nuxt, OpenStreetMap, Leaflet, websocket).`
-        },
-        {
-          date: "2016",
-          temps: "1,5 an",
-          logo: "alten.png",
-          lieu: "Boulogne (92)",
-          job: " Ingénieur solution SCADA",
-          entreprise: "Alten SIR",
-          travail: `Client: Air Liquide Service. 
-Déploiement de nouvelles solutions de supervision. Vérification du bon fonctionnement des solutions déployées. Support niveau 3.`
+          technos:"Technos: HTML/CSS (Vuetify), JavaScript (Vuejs, Nuxt, OpenStreetMap, Leaflet, websocket)",
+          travail: `Développement d'une application de supervision de drones. Développement d'interfaces de commande de robots.`
         },
         {
           date: "2014",
-          temps: "1,5 an",
+          temps: "3 ans",
           logo: "alten.png",
-          lieu: "Boulogne(92)",
-          job: " Conception SQL (Contrôleur de base de données)",
+          lieu: "Boulogne (92)",
+          job: "Ingénieur solution SCADA / Conception de script SQL",
           entreprise: "Alten SIR",
-          travail: `Client: Orange. 
-Conception de scripts SQL assurants les phases: extraction, consolidation, création d'indicateurs décisionnels pour les projets de migrations. Correction d‘anomalies fonctionnelles.`
+          technos:"Techno: SQL, Historian PI System.",
+          travail: `Client: Air Liquide Service. 
+Développement applicatif de solutions de supervision. Support niveau 3.
+Client: Orange. 
+Correction d‘anomalies fonctionnelles pour migrer le parc client vers un nouveau SI.`
         },
         {
           date: "2013",
           temps: "1,5 an",
           logo: "solutec.png",
           lieu: "Paris (75)",
-          job: "Conception SQL (Analyste de base données)",
+          job: "Conception de script SQL",
           entreprise: "Solutec",
           travail: `Client: Carrefour. 
-Conception de scripts SQL pour répondre aux études Ad hoc du services marketing France (connaissance client, bureau des marchandises, fidélité etc.).`
+Etudes et extractions ad hoc en SQL pour les services Marketing.`
         },
         {
           date: "2009",
@@ -184,24 +193,27 @@ Conception de scripts SQL pour répondre aux études Ad hoc du services marketin
           lieu: "Caligny (61)",
           job: "Apprenti qualiticien produit/process",
           entreprise: "Faurecia",
-          travail: `Gestion de projets – amélioration de la qualité des poignées à pompages. Refonte de la maille de traçabilité de la matière première. Développement d’une application de gestion des dérogation en VBA.`
+          travail: `Développement from scratch d'une application de gestion des dérogations en VBA.
+Gestion de projets: amélioration de la qualité en production mécanique`
         },
         {
           date: "2007",
           temps: "4 mois",
           logo: "codra.png",
           lieu: "Courtaboeuf (91)",
-          job: "Développeur C#",
+          job: "Stage en développement C#",
+          technos:"Technos: C#, .NET",
           entreprise: "Codra",
-          travail: `Développer un module permettant à PANORAMA de communiquer avec un modem téléphonique pour acquitter des alarmes par SMS.
-Techos: C#, .NET`
+          travail: `Développement sur une application de supervision, ajout d'un module permettant d'acquitter les alarmes par SMS.
+`
         }
+        
       ],
       formations: [
         {
           date: "2018",
           logo: "ifpa.png",
-          nom: "Titre professionnel délivré par IFPA",
+          nom: "IFPA",
           region: "Mérignac (33)",
           titre: "Développeur logiciel"
         },
@@ -210,12 +222,12 @@ Techos: C#, .NET`
           logo: "OC.png",
           nom: "Openclassrooms",
           region: "domicile",
-          titre: "Développeur web (5 certificats)"
+          titre: "Développeur WEB"
         },
         {
           date: "2012",
           logo: "ensam.png",
-          nom: "Arts et Métiers ParisTech (ENSAM)",
+          nom: "Arts et Métiers ParisTech",
           region: "Paris (75)",
           titre:
             "Diplôme d'Ingénieur des Arts & Métiers ParisTech en Alternance en Génie Industriel"
@@ -228,76 +240,65 @@ Techos: C#, .NET`
           titre: "Génie Electrique et Informatique Industrielle"
         }
       ],
+      certificats: [
+        {
+          nom:"Test unitaire Java (en cours)",
+          organisme: "Cegefos",
+          date:"2023",
+          logo:"cegefos_petit.png",
+        },
+        {
+          nom:"Sécurité web",
+          organisme: "BPCE-SI",
+          date:"2022",
+          logo:"bpce.png"
+        },
+        {
+          nom:"DevOps AWS CI/CD Jenkins",
+          organisme: "Udemy",
+          date:"2021",
+          logo:"udemy_petit.png"
+        },
+        
+      ],
       competences: [
         {
           list: [
-            "Développer une application (web, client-server)",
-            "Développement applicatif",
+            "Développer une application (front et back)",
+            "Migration d'application",
             "Conception SQL",
-            "Conduite de projet"
+            "Serveur HTTP Apache",
+            "Linux (Rhel)",
+            "Conduite de projet",
           ],
-          css: { fontSize: "1.2rem" }
+          css: { fontSize: "0.9rem" }
         }
       ],
       techniques: [
         {
-          nom: "HTML/CSS",
-          niveau: { width: "80%" },
-          cssClass: ["blue"],
-          exp: "2 ans",
-          lib: "Bootstrap, Materialze.css, Vuetify, Semantic-UI"
+          nom: "JAVA",
+          lib: "Spring, JUnit, Alfresco, Struts"
         },
         {
           nom: "JavaScript",
-          niveau: { width: "75%" },
-          cssClass: ["blue"],
-          exp: "2 ans",
-          lib: "Vuejs, Reactjs, Angular2, Nodejs, JQuery"
+          lib: "Angular, Vuejs"
         },
         {
-          nom: "JAVA",
-          niveau: { width: "50%" },
-          cssClass: ["blue "],
-          exp: "",
-          lib: "JSP, Struts"
+          nom: "HTML/CSS",
+          lib: "Material, Bootstrap, Materialze.css, Vuetify"
         },
         {
           nom: "PHP",
-          niveau: { width: "50%" },
-          cssClass: ["blue"],
-          exp: "",
-          lib: "Symfony 3"
+          lib: "Laravel"
         },
         {
           nom: "SQL",
-          niveau: { width: "90%" },
-          cssClass: ["blue"],
-          exp: "5 ans",
-          lib: "Oracle, SQL Server,TeraData, MySql, MongoDB"
+          lib: "Oracle, SQL Server,TeraData, MySql"
         },
         {
           nom: "Outils",
-          exp: "",
-          lib:
-            "Test: Jest, Deploiement: Now, Versioning: Git, Container: Docker"
+          lib: "Jasmine, Karma, Jenkins, Git, Docker"
         }
-      ],
-      realisations: [
-        {
-          adresse: "https://devweb.latence132.now.sh",
-          technos: "Vuejs, Vuetify"
-        },
-        {
-          adresse: "https://my-react-app.latence132.now.sh/",
-          technos: "Reactjs, Materialize.css",
-          css: { fontSize: "0.8rem", fontWeight: "700" }
-        },
-        {
-          adresse: "http://chaumetsoftware.com/InspirateurLitteraire/",
-          technos: "PHP, Bootstrap",
-          css: { fontSize: "0.8rem", fontWeight: "700" }
-        },
-        { adresse: "https://github.com/latence132", technos: "Github" }
       ],
       langue: { nom: "Anglais", niv: "courant" },
       contact: {
@@ -315,16 +316,11 @@ div {
   font-family: 'Dosis', sans-serif;
 }
 
-h4, h5, img {
+h2, h5, img {
   display: inline-block;
 }
 
-div >>> .expDate {
-  padding: 0 !important;
-  margin: 0 !important;
-}
-
-#cvContact, #cvFormations, #cvCompetences, #cvExps, #parallax, #cvRealisation {
+#cvContact, #cvFormations, #cvCompetences, #cvExps, #parallax, #cvRealisation, #cvCertificats {
   border-radius: 4px;
   border: 1px solid black;
   padding-top: 3px;
